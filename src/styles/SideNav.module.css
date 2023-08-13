@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "SUIT Variable", sans-serif;
+  src: url(https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css);
+}
+
+.navWrapper {
+	position: fixed;
+	width: 300px;
+	padding: 20px 30px;
+	margin-top: -10px;
+	margin-left: -10px;
+	border-right: 1px solid #dcdcdc;
+	box-sizing: border-box;
+	font-family: "SUIT Variable";
+	z-index: 999;
+	overflow: auto;
+	height: 100vh;
+	background-color: #fcfcfc;
+}
+.navWrapper::-webkit-scrollbar {
+	display: none;
+}
+.logoWrapper {
+	display: flex;
+	align-items: center;
+	height: 90px;
+}
+
+.newButton {
+	display: flex;
+	background-color: #fcfcfc;
+  border: 1px solid #dcdcdc;
+	border-radius: 5px;
+  text-decoration: none;
+	height: 50px;
+	color: #383838;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+.newIcon {
+	width: 18px;
+	height: auto;
+}
+
+.menuWrapper {
+	margin-top: 24px;
+}
+.menuList {
+	margin: 0px;
+	padding: 10px 0px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+	text-decoration: none;
+	color: #383838;
+	cursor: pointer;
+}
+.menuList:hover {
+	background-color: #f4f4f4;
+}
+.menuText {
+	margin-left: 15px;
+}
+.menuIcon {
+	width: 20px;
+	height: auto;
+	color: #383838;
+}
+
+.subMenuWrapper {
+	margin-top: 60px;
+}
+.subMenuList {
+	margin: 0px;
+	padding: 6px 0px;
+	font-size: 14px;
+	color: #a4a4a4;
+	display: flex;
+	align-items: center;
+}
+.subMenu {
+	cursor: pointer;
+}

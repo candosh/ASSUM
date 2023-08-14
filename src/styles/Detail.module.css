@@ -52,12 +52,14 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .headertitle {
   display: flex;
   margin: 40px 0 10px 40px;
   font-size: 22px;
   font-weight: 800;
 }
+
 .headerDate {
   display: flex;
   margin-left: 40px;
@@ -74,6 +76,9 @@
   align-items: center;
   justify-content: space-around;
 }
+
+
+
 .titleWrapper {
   display: flex;
   flex-direction: column;
@@ -81,13 +86,11 @@
   justify-content: space-between;
   gap: 20px;
 }
+
 .title {
   font-family: "KCC-Chassam", "SUIT Variable", sans-serif;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 800;
-}
-.titleSub {
-  font-size: 14px;
 }
 
 .tagWrapper {
@@ -98,10 +101,12 @@
   max-width: 500px;
   margin: 0;
 }
+
 .tagList {
   margin-right: 8px;
   margin-bottom: 8px;
 }
+
 .tag {
   padding: 8px 16px;
   border: none;
@@ -112,32 +117,49 @@
   background-color: #00BFFF;
 }
 
+.titleSub {
+  font-size: 14px;
+}
+
 .playWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 30px;
 }
-.iconPlay, .iconFive {
-  width: 30px;
+
+.iconPlay,
+.iconFive {
+  width: 20px;
   height: auto;
   color: #383838;
 }
 
 .content {
   font-family: "MaruBuri-Regular", "SUIT Variable", sans-serif;
-  line-height: 28px;
+}
+
+.summaryBox {
+  height: 200px;
+  width: 800px;
+  /* 텍스트 박스 경계 없애기
+    border: none;
+    outline: none;
+  */
+  font-size: 16px;
 }
 
 .bottomLink {
   margin-bottom: 40px;
 }
+
 .bottomLink a {
   color: #00a3d9;
-  font-weight: 600;
+  font-weight: 300;
   text-decoration: none;
 }
+
 .breakline {
   margin: 0;
-  border: 1px solid #00a3d9;
+  border: 0.3px solid #00a3d9;
 }

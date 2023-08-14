@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import styles from "@src/styles/Home.module.css"
-import NewFile from '@src/components/NewFile';
+import styles from "@src/styles/All.module.css"
+import NewFile from '@src/components/Wokspace/NewFile';
 import { BiSearch } from "react-icons/bi";
 
 interface SearchBarProps {
@@ -10,11 +10,14 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchTerm(value);
     onSearch(value);
   };
+
+
 
   return (
     <div className={styles.inputContainer}>
@@ -31,7 +34,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 };
 
 
-function Home() {
+function All() {
   const handleSearch = (searchTerm: string) => {
     console.log('검색어:', searchTerm);
     // 검색 로직 구현
@@ -41,7 +44,7 @@ function Home() {
     <>
       <div className={styles.root}>
         <div className={styles.header}>
-          <div className={styles.title}>최근 파일</div>
+          <div className={styles.title}>전체 파일</div>
           <SearchBar onSearch={handleSearch} />
         </div>
         <div className={styles.body}>
@@ -64,4 +67,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default All;

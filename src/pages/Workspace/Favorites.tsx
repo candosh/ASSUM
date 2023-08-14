@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from "@src/styles/Favorites.module.css"
-import NewFile from '@src/components/NewFile';
+import NewFile from '@src/components/Wokspace/NewFile';
 import { BiSearch } from "react-icons/bi";
 
 interface SearchBarProps {

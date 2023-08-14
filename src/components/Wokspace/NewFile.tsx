@@ -2,6 +2,11 @@
 import styles from "@src/styles/NewFile.module.css";
 import { FaMicrophone } from "react-icons/fa";
 
+interface NewFileProps {
+  createdDate: string; // 생성 일자 prop 추가
+}
+
+
 function NewFile() {
   return (
     <div className={styles.root}>

@@ -1,58 +1,52 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "@src/styles/Detail.module.css"
 import { FaPlay } from "react-icons/fa";
 import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
-
-type Contents = {
-  text: string;
-  title: string;
-  keyword: string[];
-  link: string;
-};
-
-const defaultData: Contents = {
-  text: "텍스트입니다",
-  title: "제목입니다",
-  keyword: ["키워드1", "키워드2", "키워드3"],
-  link: "원문 링크",
-};
+import { useAtomValue } from "jotai";
+import { dataTitle, dataSum, dataKeywordArr, dataLink } from "@src/lib/stateJotai";
+import Loading from "./Loading";
 
 const Detail = () => {
-  const [contents, setContents] = useState<Contents>(defaultData);
   const headerDate = getFormattedDate();
+  const [contents, setContents] = useState<Contents | null>(null);
+  const title = useAtomValue(dataTitle);
+  const keyword = useAtomValue(dataKeywordArr);
+  const sum = useAtomValue(dataSum);
+  const link = useAtomValue(dataLink);
+  
+  type Contents = {
+    text: string;
+    title: string;
+    keyword: string[];
+    link: string;
+  };
+
+  useEffect(() => {
+    // 데이터가 준비되었을 때만 컨텐츠 업데이트
+    if (title && keyword && sum) {
+      setContents({
+        text: sum,
+        title: title,
+        keyword: keyword.split(', '),
+        link: link,
+      });
+    }
+  }, [title, keyword, sum, link]);
 
   useEffect(() => {
     window.speechSynthesis.getVoices();
   }, []);
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setContents((prev) => {
-      return {
-        ...prev,
-        text: e.target.value,
-      };
-    });
-  };
-
   const handlePlayButton = () => {
-    /** API 호출 및 결과 값 받아오는 로직 추가
-     * 통신 예시 (상황에 맞게 커스텀하세요!)
-     *
-     * axios.get("https://api~~", {
-     * headers: {
-     *  'Content-Type': 'application/json',
-     *  ~~~ 헤더에 넣을 것들 여기에
-     *  }
-     * }).then((res) => {
-     *  setCotents(res.data);
-     * }).catch((err) => {
-     *  console.log(err);
-     * })
-     */
-
-    getSpeech(contents.text);
+    if(contents) {
+      getSpeech(contents.text);
+    }    
   };
+  
+  if (!contents) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -81,7 +75,14 @@ const Detail = () => {
             <FaPlay className={styles.iconPlay} onClick={handlePlayButton}></FaPlay>
           </div>
           <div className={styles.content}>
-            <input type="text" className={styles.summaryBox} onChange={handleInput} value={contents.text} />
+            <p className={styles.summaryBox}>
+              {contents.text.split(/, |\. /).map((sentence, index, array) => (
+                <p key={index}>
+                  {sentence}
+                  {index < array.length - 1 && (array[index].endsWith(',') || array[index].endsWith('.')) ? '' : index < array.length - 1 ? ', ' : ''}
+                </p>
+              ))}
+            </p>
           </div>
           <div className={styles.bottomLink}>
             <a

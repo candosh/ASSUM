@@ -185,9 +185,9 @@ export default function SignUp() {
               onChange={(e) => {
                 handleSingleCheck(e.target.checked, 3);
               }}
-              checked={checkPolicy.includes(3) ? true : false}
+              checked={checkPolicy.includes(4) ? true : false}
             ></input>
-            <h5>광고성 메세지(SNS), 이메일 뉴스레터 수신에 동의합니다 (선택)</h5>
+            <h5>광고성 메시지, 이메일 뉴스레터 수신에 동의합니다 (선택)</h5>
           </div>
           <Link to="/login" className={styles.signInLink}>
             <button

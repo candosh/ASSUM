@@ -116,7 +116,7 @@ function LoginForm(): JSX.Element {
 						}>
 						올바른 비밀번호를 입력해주세요
 					</p>
-					<Link to="/home">
+					<Link to="/home" className={styles.loginBtn}>
 						<button
 							onClick={handleLoginSubmit}
 							className={

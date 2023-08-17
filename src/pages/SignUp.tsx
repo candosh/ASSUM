@@ -9,8 +9,6 @@ import styles from "@src/styles/signUp.module.css";
 //   id: number;
 // }
 
-type items = { id: number; checked: boolean };
-
 export default function SignUp() {
   const data = [
     { id: 0, title: "선택 1" },
@@ -42,17 +40,12 @@ export default function SignUp() {
   };
 
   // change signin button for check state
-  const [btnState, setBtnState] = useState<number>(0);
+  const [, setBtnState] = useState<number>(0);
   const [allSelect, setAllSelect] = useState<boolean>(false);
-  const [checkState1, setCheckState1] = useState<boolean>(false);
-  const [checkState2, setCheckState2] = useState<boolean>(false);
-  const [checkState3, setCheckState3] = useState<boolean>(false);
+  const [, setCheckState1] = useState<boolean>(false);
+  const [, setCheckState2] = useState<boolean>(false);
+  const [, setCheckState3] = useState<boolean>(false);
 
-  const toggleAgree = () => {
-    if (checkState1 === true && checkState2 === true && checkState3 === true) {
-      setAllSelect(true);
-    }
-  };
 
   const isChecked = () => {
     if (checkPolicy.includes(0)) {

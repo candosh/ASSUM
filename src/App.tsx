@@ -24,8 +24,8 @@ function App() {
           <Route path="/home/detail" element={<Detail />} />
           <Route path="/home/favorites" element={<Favorites />} />
           <Route path="/home/loading" element={<Loading />} />
-          <Route path="/home/login" element={<Login />} />
-          <Route path="/home/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -21,7 +21,6 @@ function LoginForm() {
 	const [password, setPassword] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
-	const router = useRouter();
 
 	const isPassedLogin = () => {
 		return email.includes("@") && email.length > 5 && email.includes(".")
@@ -42,19 +41,6 @@ function LoginForm() {
 		setPassword(event.target.value);
 	};
 
-	const login = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		e.preventDefault();
-		const response = await signIn("credentials", {
-			email,
-			password,
-			redirect: false,
-			// callbackUrl: "/main",
-		});
-		console.log(response);
-		if (response && response.error === null) {
-			router.push("/main");
-		}
-	};
 
 	return (
 		<div className={styles.LoginForm}>
@@ -119,8 +105,7 @@ function LoginForm() {
 							? styles.submitBtn
 							: styles.unactiveBtn
 					}
-					disabled={email === "" && password === "" ? true : false}
-					onClick={(e) => login(e)}>
+					disabled={email === "" && password === "" ? true : false}>
 					이메일로 계속하기
 				</button>
 				<p className={styles.subTitle2}>또는</p>

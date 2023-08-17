@@ -3,6 +3,7 @@ import styles from "@src/styles/login.module.css";
 import logo from "@src/assets/logo.png";
 import chevron from "@src/assets/img/icons8-셰브론-오른쪽-52.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Login(): JSX.Element {
 	return (
@@ -38,6 +39,20 @@ function LoginForm(): JSX.Element {
 		setPassword(event.target.value);
 	};
 
+	const handleLoginSubmit = async () => {
+		if (isActive && email !== "" && isActivePw && password !== "") {
+			axios.post('https://www.assum.store/login', {
+				email: email,
+				password: password
+			})
+				.then((res) => {
+					console.log(res);
+				})
+				.catch((err) => {
+					console.error("로그인 실패", err);
+				});
+		}
+	};
 
 	return (
 		<div className={styles.loginContainer}>
@@ -96,8 +111,7 @@ function LoginForm(): JSX.Element {
 						올바른 비밀번호를 입력해주세요
 					</p>
 					<button
-						// type="submit"
-						// formMethod="post"
+						onClick={handleLoginSubmit}
 						className={
 							isActive && email !== "" && isActivePw && password !== ""
 								? styles.submitBtn

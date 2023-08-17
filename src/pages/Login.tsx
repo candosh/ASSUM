@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "@src/styles/login.module.css";
+import styles from "@src/styles/login.module.css"
 import logo from "@src/assets/logo.png";
 import chevron from "@src/assets/img/icons8-셰브론-오른쪽-52.png";
 import { Link } from "react-router-dom";
@@ -19,26 +19,31 @@ function LoginForm(): JSX.Element {
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
 
+	// 이메일이 유효한 형식인지 검사하여 로그인 버튼 활성화
 	const isPassedLogin = (): void => {
 		email.includes("@") && email.length > 5 && email.includes(".")
 			? setIsActive(true)
 			: setIsActive(false);
 	};
 
+	// 비밀번호가 조건에 맞는지 검사하여 로그인 버튼 활성화
 	const isCorrectPassword = (): void => {
 		password.length > 7 && isActive
 			? setIsActivePw(true)
 			: setIsActivePw(false);
 	};
 
+	// 이메일 입력 시 상태 변수들을 업데이트
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setEmail(event.target.value);
 	};
 
+	// 비밀번호 입력 시 상태 변수들을 업데이트
 	const handleInputPw = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setPassword(event.target.value);
 	};
 
+	// 로그인 버튼이 클릭되었을 때 api 요청
 	const handleLoginSubmit = async () => {
 		if (isActive && email !== "" && isActivePw && password !== "") {
 			axios.post('https://www.assum.store/login', {

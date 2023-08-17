@@ -3,16 +3,27 @@
   src: url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap");
 }
 
+
+.loginContainer {
+  position: absolute;
+  left: 300px;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .LoginForm {
-  /* background-color: #f7f7f7; */
   width: 100%;
-  -webkit-box-pack: center;
+  max-width: 600px;
+  margin: 0;
   display: flex;
   justify-content: center;
-  min-height: 1080px;
-  height: 100%;
-  display: flex;
+  height: auto;
 }
+
 
 .LoginBox {
   max-width: 400px;

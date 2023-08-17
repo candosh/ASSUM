@@ -40,87 +40,89 @@ function LoginForm(): JSX.Element {
 
 
 	return (
-		<div className={styles.LoginForm}>
-			<div className={styles.LoginBox}>
-				<img
-					className={styles.LOGO}
-					src={logo}
-					width={120}
-					alt="logo_login"
-				/>
-				<h4 className={styles.LoginTitle}>
-					하나의 계정으로
-					<br />
-					더욱 편리하게
-				</h4>
-				<p className={styles.subtitle}>
-					ASSUM이 제공하는 서비스를
-					<br />
-					하나의 계정으로 모두 이용할 수 있습니다
-				</p>
-				<p className={styles.formTitle}>이메일</p>
-				<input
-					className={
-						isActive || email === ""
-							? styles.emailInputBox
-							: styles.emailInputBox1
-					}
-					onChange={handleInput}
-					onKeyUp={isPassedLogin}
-					type="email"
-					required
-					placeholder="이메일을 입력해주세요"></input>
-				<p
-					className={
-						isActive || email === "" ? styles.nowarning : styles.warning
-					}>
-					올바른 이메일을 입력해주세요
-				</p>
-				<p className={styles.formTitle}>비밀번호</p>
-				<input
-					className={
-						isActivePw || password === ""
-							? styles.emailInputBox
-							: styles.emailInputBox1
-					}
-					onChange={handleInputPw}
-					onKeyUp={isCorrectPassword}
-					type="password"
-					required
-					placeholder="비밀번호를 입력해주세요"></input>
-				<p
-					className={
-						isActivePw || password === "" ? styles.nowarning : styles.warning
-					}>
-					올바른 비밀번호를 입력해주세요
-				</p>
-				<button
-					// type="submit"
-					// formMethod="post"
-					className={
-						isActive && email !== "" && isActivePw && password !== ""
-							? styles.submitBtn
-							: styles.unactiveBtn
-					}
-					disabled={email === "" && password === "" ? true : false}>
-					이메일로 계속하기
-				</button>
-				<Link to="/signup" className={styles.findBtn}>
-					<p className={styles.forgotten}>회원이 아니시라면</p>
-					<span>
-						<img className={styles.chevron} src={chevron} width={16} alt="chevron" />
-					</span>
-				</Link>
-				<hr className={styles.liner} />
-				<div className={styles.partSection}>
-					<Link className={styles.terms} to="/Terms">
-						이용약관
+		<div className={styles.loginContainer}>
+			<div className={styles.LoginForm}>
+				<div className={styles.LoginBox}>
+					<img
+						className={styles.LOGO}
+						src={logo}
+						width={120}
+						alt="logo_login"
+					/>
+					<h4 className={styles.LoginTitle}>
+						하나의 계정으로
+						<br />
+						더욱 편리하게
+					</h4>
+					<p className={styles.subtitle}>
+						ASSUM이 제공하는 서비스를
+						<br />
+						하나의 계정으로 모두 이용할 수 있습니다
+					</p>
+					<p className={styles.formTitle}>이메일</p>
+					<input
+						className={
+							isActive || email === ""
+								? styles.emailInputBox
+								: styles.emailInputBox1
+						}
+						onChange={handleInput}
+						onKeyUp={isPassedLogin}
+						type="email"
+						required
+						placeholder="이메일을 입력해주세요"></input>
+					<p
+						className={
+							isActive || email === "" ? styles.nowarning : styles.warning
+						}>
+						올바른 이메일을 입력해주세요
+					</p>
+					<p className={styles.formTitle}>비밀번호</p>
+					<input
+						className={
+							isActivePw || password === ""
+								? styles.emailInputBox
+								: styles.emailInputBox1
+						}
+						onChange={handleInputPw}
+						onKeyUp={isCorrectPassword}
+						type="password"
+						required
+						placeholder="비밀번호를 입력해주세요"></input>
+					<p
+						className={
+							isActivePw || password === "" ? styles.nowarning : styles.warning
+						}>
+						올바른 비밀번호를 입력해주세요
+					</p>
+					<button
+						// type="submit"
+						// formMethod="post"
+						className={
+							isActive && email !== "" && isActivePw && password !== ""
+								? styles.submitBtn
+								: styles.unactiveBtn
+						}
+						disabled={email === "" && password === "" ? true : false}>
+						로그인
+					</button>
+					<Link to="/signup" className={styles.findBtn}>
+						<p className={styles.forgotten}>회원이 아니시라면</p>
+						<span>
+							<img className={styles.chevron} src={chevron} width={16} alt="chevron" />
+						</span>
 					</Link>
-					<Link className={styles.policy} to="/Policy">
-						개인정보처리방침
-					</Link>
+					<hr className={styles.liner} />
+					<div className={styles.partSection}>
+						<Link className={styles.terms} to="/Terms">
+							이용약관
+						</Link>
+						<Link className={styles.policy} to="/Policy">
+							개인정보처리방침
+						</Link>
+					</div>
+					<p className={styles.footer}>Ⓒ ASSUM</p>
 				</div>
-				<p className={styles.footer}>Ⓒ ASSUM</p>
 			</div>
 		</div>
 	);

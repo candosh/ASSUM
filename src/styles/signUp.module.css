@@ -1,11 +1,21 @@
+.loginContainer {
+  position: absolute;
+  left: 300px;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .Upper {
   /* background-color: #f7f7f7; */
   width: 100%;
   -webkit-box-pack: center;
   display: flex;
   justify-content: center;
-  min-height: 1080px;
-  height: 100%;
+  height: auto;
   display: flex;
 }
 

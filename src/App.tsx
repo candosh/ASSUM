@@ -12,12 +12,14 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 // import Landing from './pages/Landing'
 
+//추후 루트 경로 랜딩으로 변경!
 function App() {
   return (
     <div>
       <BrowserRouter>
         <SideNav />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/new" element={<New />} />
           <Route path="/home" element={<Home />} />
           <Route path="/home/all" element={<All />} />

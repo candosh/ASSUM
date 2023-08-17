@@ -52,6 +52,7 @@ function LoginForm(): JSX.Element {
 			})
 				.then((res) => {
 					console.log(res);
+					alert('로그인 성공 🙌🏻');
 				})
 				.catch((err) => {
 					console.error("로그인 실패", err);

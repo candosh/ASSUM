@@ -1,8 +1,12 @@
-"use client";
-
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "@src/styles/signUp.module.css";
+import axios from "axios";
+
+// export interface checkItems {
+//   checked: any;
+//   id: number;
+// }
 
 export default function SignUp() {
   // 선택 동의 사항
@@ -58,6 +62,35 @@ export default function SignUp() {
     }
   };
 
+  //add: email,password state
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+
+  const handleSignUp = async () => {
+    if (password !== confirmPassword) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('https://www.assum.store/signUp', {
+        email,
+        password
+      });
+
+      if (response.status === 200) {
+        console.log(response);
+        alert('회원가입 성공 🙌🏻');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.Upper}>
@@ -70,17 +103,24 @@ export default function SignUp() {
             type="email"
             placeholder="이메일을 입력해주세요"
             className={styles.emailInputBox}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           ></input>
+
           <h5>비밀번호</h5>
           <input
             type="password"
             className={styles.passwordInputBox1}
             placeholder="비밀번호를 입력해주세요"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           ></input>
           <input
             type="password"
             className={styles.passwordInputBox2}
             placeholder="비밀번호를 다시 한번 입력해주세요"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
           <p className={styles.passwordInfo}>
             영문자 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상
@@ -152,6 +192,7 @@ export default function SignUp() {
           <button
             className={allSelect ? styles.signInBtn1 : styles.signInBtn0}
             disabled={allSelect ? false : true}
+            onClick={handleSignUp}
           >
             가입하기
           </button>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "@src/styles/Detail.module.css"
-import { FaPlay } from "react-icons/fa";
+import { FaPlay, FaStop } from "react-icons/fa";
 import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
 import { useAtomValue } from "jotai";
@@ -14,7 +14,8 @@ const Detail = () => {
   const keyword = useAtomValue(dataKeywordArr);
   const sum = useAtomValue(dataSum);
   const link = useAtomValue(dataLink);
-  
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
   type Contents = {
     text: string;
     title: string;
@@ -39,11 +40,15 @@ const Detail = () => {
   }, []);
 
   const handlePlayButton = () => {
-    if(contents) {
+    if (isPlaying) {
+      window.speechSynthesis.cancel();
+      setIsPlaying(false);
+    } else if (contents) {
       getSpeech(contents.text);
-    }    
+      setIsPlaying(true);
+    }
   };
-  
+
   if (!contents) {
     return <Loading />;
   }
@@ -72,7 +77,11 @@ const Detail = () => {
             </div>
           </div>
           <div className={styles.playWrapper}>
-            <FaPlay className={styles.iconPlay} onClick={handlePlayButton}></FaPlay>
+            {isPlaying ? (
+              <FaStop className={styles.iconStop} onClick={handlePlayButton}></FaStop>
+            ) : (
+              <FaPlay className={styles.iconPlay} onClick={handlePlayButton}></FaPlay>
+            )}
           </div>
           <div className={styles.content}>
             <p className={styles.summaryBox}>

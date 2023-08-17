@@ -29,6 +29,7 @@
   border-radius: 5px;
   padding: 20px;
 }
+
 .LoginTitle {
   font-size: 26px;
   letter-spacing: -0.023em;
@@ -69,6 +70,7 @@
   font-size: 16px;
   color: #333;
 }
+
 .emailInputBox1 {
   /* width: 100%; */
   height: 50px;
@@ -152,51 +154,13 @@
   display: none;
 }
 
-.subTitle2 {
-  color: #939393;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0.025em;
-  font-size: 12px;
-  line-height: 16px;
-  margin-top: 6px;
-  margin-bottom: 26px;
-}
-
-.kakaoLogin {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0px;
-  display: inline-block;
-}
-
-.kakaotitle {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 500;
-  color: #888;
-  text-align: center;
-  letter-spacing: 0.031em;
-  font-size: 11px;
-  line-height: 14px;
-  text-transform: capitalize;
-}
-
-.platforms {
-  margin: 0 auto;
-}
-
 .findBtn {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.findBtn > p {
+.findBtn>p {
   margin-bottom: 0;
   display: inline-flex;
   -webkit-box-pack: center;

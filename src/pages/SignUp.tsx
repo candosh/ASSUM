@@ -63,21 +63,16 @@ export default function SignUp() {
     <div className={styles.Upper}>
       <div className={styles.signInBox}>
         <span>
-          <Link to="/login">
-            <button className={styles.closeBtn}>취소</button>
-          </Link>
           <h4 className={styles.signInTitle}>회원가입</h4>
         </span>
         <h5>이메일</h5>
-        <span>
-          <input
-            className={styles.emailInputBox}
-            placeholder="이메일을 입력해주세요"
-          ></input>
-          <button className={styles.emailCheck}>중복확인</button>
-        </span>
+        <input
+          type="email"
+          placeholder="이메일을 입력해주세요"
+          className={styles.emailInputBox}
+        ></input>
 
-        <h5>이름</h5>
+        {/*<h5>이름</h5>
         <input
           type="text"
           className={styles.nameInputBox}
@@ -87,7 +82,7 @@ export default function SignUp() {
         <input
           placeholder="닉네임을 입력해주세요"
           className={styles.nicknameInputBox}
-        ></input>
+        ></input>*/}
         <h5>비밀번호</h5>
         <input
           type="password"
@@ -141,7 +136,7 @@ export default function SignUp() {
             }}
             checked={checkPolicy.includes(2) ? true : false}
           ></input>
-          <h5>원아워 이용약관에 동의합니다 (필수)</h5>
+          <h5>ASSUM 이용약관에 동의합니다 (필수)</h5>
         </div>
         <div className={styles.agreeForm4}>
           <input
@@ -154,7 +149,7 @@ export default function SignUp() {
             }}
             checked={checkPolicy.includes(3) ? true : false}
           ></input>
-          <h5>원아워 개인정보 수집 및 이용에 동의합니다 (필수)</h5>
+          <h5>ASSUM 개인정보 수집 및 이용에 동의합니다 (필수)</h5>
         </div>
         <div className={styles.agreeForm5}>
           <input
@@ -173,6 +168,9 @@ export default function SignUp() {
         >
           가입하기
         </button>
+        <Link to="/login">
+          <button className={styles.closeBtn}>로그인 페이지로 돌아가기</button>
+        </Link>
       </div>
     </div>
   );

@@ -1,14 +1,10 @@
-"use client";
-
 import { useState } from "react";
 import styles from "@src/styles/login.module.css";
 import logo from "@src/assets/logo.png";
-import kakao from "@src/assets/img/kakaotalk_logo_icon_147272.png";
 import chevron from "@src/assets/img/icons8-셰브론-오른쪽-52.png";
 import { Link } from "react-router-dom";
 
-export default function Login() {
-
+export default function Login(): JSX.Element {
 	return (
 		<>
 			<LoginForm />
@@ -16,28 +12,29 @@ export default function Login() {
 	);
 }
 
-function LoginForm() {
+function LoginForm(): JSX.Element {
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
 
-	const isPassedLogin = () => {
-		return email.includes("@") && email.length > 5 && email.includes(".")
+	const isPassedLogin = (): void => {
+		email.includes("@") && email.length > 5 && email.includes(".")
 			? setIsActive(true)
 			: setIsActive(false);
 	};
-	const isCorrectPassword = () => {
-		return password.length > 7 && isActive
+
+	const isCorrectPassword = (): void => {
+		password.length > 7 && isActive
 			? setIsActivePw(true)
 			: setIsActivePw(false);
 	};
 
-	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setEmail(event.target.value);
 	};
 
-	const handleInputPw = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleInputPw = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setPassword(event.target.value);
 	};
 
@@ -57,7 +54,7 @@ function LoginForm() {
 					더욱 편리하게
 				</h4>
 				<p className={styles.subtitle}>
-					원아워가 제공하는 서비스를
+					ASSUM이 제공하는 서비스를
 					<br />
 					하나의 계정으로 모두 이용할 수 있습니다
 				</p>
@@ -108,24 +105,12 @@ function LoginForm() {
 					disabled={email === "" && password === "" ? true : false}>
 					이메일로 계속하기
 				</button>
-				<p className={styles.subTitle2}>또는</p>
-				<div className={styles.platforms}>
-					<button className={styles.kakaoLogin}>
-						<img src={kakao} alt="kakao" width={56} height={56} />
-						<p className={styles.kakaotitle}>KaKao</p>
-					</button>
-				</div>
-				<button className={styles.findBtn}>
+				<Link to="/signup" className={styles.findBtn}>
 					<p className={styles.forgotten}>회원이 아니시라면</p>
 					<span>
-						<img
-							className={styles.chevron}
-							src={chevron}
-							width={16}
-							alt="chevron"
-						/>
+						<img className={styles.chevron} src={chevron} width={16} alt="chevron" />
 					</span>
-				</button>
+				</Link>
 				<hr className={styles.liner} />
 				<div className={styles.partSection}>
 					<Link className={styles.terms} to="/Terms">
@@ -135,7 +120,7 @@ function LoginForm() {
 						개인정보처리방침
 					</Link>
 				</div>
-				<p className={styles.footer}>Ⓒ NEXT PROJECT B TEAM</p>
+				<p className={styles.footer}>Ⓒ ASSUM</p>
 			</div>
 		</div>
 	);

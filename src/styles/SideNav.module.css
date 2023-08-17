@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "SUIT Variable", sans-serif;
-  src: url(https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css);
+	font-family: "SUIT Variable", sans-serif;
+	src: url(https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css);
 }
 
 .navWrapper {
@@ -17,9 +17,11 @@
 	height: 100vh;
 	background-color: #fcfcfc;
 }
+
 .navWrapper::-webkit-scrollbar {
 	display: none;
 }
+
 .logoWrapper {
 	display: flex;
 	align-items: center;
@@ -29,9 +31,9 @@
 .newButton {
 	display: flex;
 	background-color: #fcfcfc;
-  border: 1px solid #dcdcdc;
+	border: 1px solid #dcdcdc;
 	border-radius: 5px;
-  text-decoration: none;
+	text-decoration: none;
 	height: 50px;
 	color: #383838;
 	align-items: center;
@@ -39,6 +41,7 @@
 	font-size: 16px;
 	cursor: pointer;
 }
+
 .newIcon {
 	width: 18px;
 	height: auto;
@@ -47,6 +50,7 @@
 .menuWrapper {
 	margin-top: 24px;
 }
+
 .menuList {
 	margin: 0px;
 	padding: 10px 0px;
@@ -58,12 +62,15 @@
 	color: #383838;
 	cursor: pointer;
 }
+
 .menuList:hover {
 	background-color: #f4f4f4;
 }
+
 .menuText {
 	margin-left: 15px;
 }
+
 .menuIcon {
 	width: 20px;
 	height: auto;
@@ -73,6 +80,7 @@
 .subMenuWrapper {
 	margin-top: 60px;
 }
+
 .subMenuList {
 	margin: 0px;
 	padding: 6px 0px;
@@ -80,7 +88,7 @@
 	color: #a4a4a4;
 	display: flex;
 	align-items: center;
-}
-.subMenu {
+	position: relative;
+	text-decoration: none;
 	cursor: pointer;
 }

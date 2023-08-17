@@ -19,7 +19,6 @@ function New() {
   };
 
   const handleSummary = async () => {
-    //api 연결
     axios.post(
       'https://www.assum.store/url',
       new URLSearchParams({

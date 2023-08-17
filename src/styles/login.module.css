@@ -66,6 +66,7 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   color: #888;
+  text-align: left;
 }
 
 .emailInputBox {

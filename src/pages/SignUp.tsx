@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "@src/styles/signUp.module.css";
 
-// export interface checkItems {
-//   checked: any;
-//   id: number;
-// }
-
 export default function SignUp() {
+  // 선택 동의 사항
   const data = [
     { id: 0, title: "선택 1" },
     { id: 1, title: "선택 2" },
@@ -17,9 +13,11 @@ export default function SignUp() {
     { id: 3, title: "선택 4" },
     { id: 4, title: "선택 5" },
   ];
-  //Array for checked Agree policy
+
+  // 동의 여부를 저장하는 배열
   const [checkPolicy, setCheckPolicy] = useState<number[]>([]);
-  // function for single checked and pushing item into Array
+  
+  // 개별 동의 사항 체크 처리
   const handleSingleCheck = (checked: boolean, id: number) => {
     if (checked) {
       setCheckPolicy((prev) => [...prev, id]);
@@ -27,7 +25,8 @@ export default function SignUp() {
       setCheckPolicy(checkPolicy.filter((el) => el !== id));
     }
   };
-  // function for single checked and pushing all item into Array
+  
+  // 전체 동의 체크 처리
   const handleAllCheck = (checked: boolean) => {
     if (checked) {
       const idArray: number[] = [];
@@ -39,7 +38,7 @@ export default function SignUp() {
     }
   };
 
-  // change signin button for check state
+  // 개별 동의 사항 체크 여부 확인
   const [, setBtnState] = useState<number>(0);
   const [allSelect, setAllSelect] = useState<boolean>(false);
   const [, setCheckState1] = useState<boolean>(false);
@@ -72,18 +71,6 @@ export default function SignUp() {
             placeholder="이메일을 입력해주세요"
             className={styles.emailInputBox}
           ></input>
-
-          {/*<h5>이름</h5>
-        <input
-          type="text"
-          className={styles.nameInputBox}
-          placeholder="이름을 입력해주세요"
-        ></input>
-        <h5>닉네임</h5>
-        <input
-          placeholder="닉네임을 입력해주세요"
-          className={styles.nicknameInputBox}
-        ></input>*/}
           <h5>비밀번호</h5>
           <input
             type="password"
@@ -110,9 +97,8 @@ export default function SignUp() {
               checked={checkPolicy.length === data.length ? true : false}
             ></input>
             <h5>전체 동의</h5>
-            <hr />
           </div>
-
+          <hr />
           <div className={styles.agreeForm2}>
             <input
               type="checkbox"

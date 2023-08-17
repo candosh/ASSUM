@@ -189,13 +189,15 @@ export default function SignUp() {
             ></input>
             <h5>광고성 메세지(SNS), 이메일 뉴스레터 수신에 동의합니다 (선택)</h5>
           </div>
-          <button
-            className={allSelect ? styles.signInBtn1 : styles.signInBtn0}
-            disabled={allSelect ? false : true}
-            onClick={handleSignUp}
-          >
-            가입하기
-          </button>
+          <Link to="/login" className={styles.signInLink}>
+            <button
+              className={allSelect ? styles.signInBtn1 : styles.signInBtn0}
+              disabled={allSelect ? false : true}
+              onClick={handleSignUp}
+            >
+              가입하기
+            </button>
+          </Link>
           <Link to="/login">
             <button className={styles.closeBtn}>로그인 페이지로 돌아가기</button>
           </Link>

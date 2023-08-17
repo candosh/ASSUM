@@ -116,16 +116,18 @@ function LoginForm(): JSX.Element {
 						}>
 						올바른 비밀번호를 입력해주세요
 					</p>
-					<button
-						onClick={handleLoginSubmit}
-						className={
-							isActive && email !== "" && isActivePw && password !== ""
-								? styles.submitBtn
-								: styles.unactiveBtn
-						}
-						disabled={email === "" && password === "" ? true : false}>
-						로그인
-					</button>
+					<Link to="/home">
+						<button
+							onClick={handleLoginSubmit}
+							className={
+								isActive && email !== "" && isActivePw && password !== ""
+									? styles.submitBtn
+									: styles.unactiveBtn
+							}
+							disabled={email === "" && password === "" ? true : false}>
+							로그인
+						</button>
+					</Link>
 					<Link to="/signup" className={styles.findBtn}>
 						<p className={styles.forgotten}>회원이 아니시라면</p>
 						<span>

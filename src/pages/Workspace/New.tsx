@@ -26,24 +26,24 @@ function New() {
         url: inputValue
       })
     )
-    .then(
-      (res) => {
-        console.log(res);
-        const data: string = res.data;
-        const dataArray = data.split('\n')
-          .map(line => line.replace("제목: ", "").replace("키워드: ", "").replace("요약글: ", "").replace("제목 : ", "").replace("키워드 : ", "").replace("요약글 : ", ""))
-          .filter(item => item !== "");
-        // const keyword = dataArray[1].split(', ');
-        
-        setTitle(dataArray[0]);
-        setKeywordArr(dataArray[1]);
-        setSum(dataArray[2]);
-        setLink(inputValue);
-      },
-      (err) => {
-        console.error("API 요청 오류:", err);
-      }
-    )
+      .then(
+        (res) => {
+          console.log(res);
+          const data: string = res.data;
+          const dataArray = data.split('\n')
+            .map(line => line.replace("제목: ", "").replace("키워드: ", "").replace("요약글: ", "").replace("제목 : ", "").replace("키워드 : ", "").replace("요약글 : ", ""))
+            .filter(item => item !== "");
+          // const keyword = dataArray[1].split(', ');
+
+          setTitle(dataArray[0]);
+          setKeywordArr(dataArray[1]);
+          setSum(dataArray[2]);
+          setLink(inputValue);
+        },
+        (err) => {
+          console.error("API 요청 오류:", err);
+        }
+      )
   };
 
   return (

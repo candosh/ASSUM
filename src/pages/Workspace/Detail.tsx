@@ -84,14 +84,14 @@ const Detail = () => {
             )}
           </div>
           <div className={styles.content}>
-            <p className={styles.summaryBox}>
+            <div className={styles.summaryBox}>
               {contents.text.split(/, |\. /).map((sentence, index, array) => (
                 <p key={index}>
                   {sentence}
                   {index < array.length - 1 && (array[index].endsWith(',') || array[index].endsWith('.')) ? '' : index < array.length - 1 ? ', ' : ''}
                 </p>
               ))}
-            </p>
+            </div>
           </div>
           <div className={styles.bottomLink}>
             <a

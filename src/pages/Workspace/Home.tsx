@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import styles from "@src/styles/Home.module.css"
-//import NewFile from '@src/components/Wokspace/NewFile';
 import { FaMicrophone } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import axios from 'axios';
@@ -37,8 +36,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 const handleSearch = (searchTerm: string) => {
   console.log('검색어:', searchTerm);
   // 검색 로직 구현
+  // 예를 들면, searchTerm을 사용하여 서버에 검색 요청을 보낼 수 있습니다.
 };
-
 
 function Home() {
   const [userId] = useAtom(userIdAtom);
@@ -82,7 +81,6 @@ function Home() {
       </div>
     );
   }
-
 
   return (
     <>

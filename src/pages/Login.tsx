@@ -25,7 +25,7 @@ function LoginForm(): JSX.Element {
 
 	useEffect(() => {
 		if (userId) {
-			window.location.href = "/home";
+			window.location.href = "/new";
 		}
 	}, [userId]);
 
@@ -57,7 +57,7 @@ function LoginForm(): JSX.Element {
 			})
 				.then((res) => {
 					console.log(res);
-					const userId: number = res.data.id;
+					const userId: number = res.data;
 					setUserId(userId);
 					alert('로그인 성공 🙌🏻');
 				})

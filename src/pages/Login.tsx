@@ -20,7 +20,7 @@ function LoginForm(): JSX.Element {
 	const [password, setPassword] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
-	const [, setUserId] = useAtom(userIdAtom);
+	const [storedUserId, setUserId] = useAtom(userIdAtom);
 
 	// 이메일이 유효한 형식인지 검사하여 로그인 버튼 활성화
 	const isPassedLogin = (): void => {

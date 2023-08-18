@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "@src/styles/Home.module.css"
 import NewFile from '@src/components/Wokspace/NewFile';
 import { BiSearch } from "react-icons/bi";
+import axios from 'axios';
+import { useAtom } from 'jotai';
+import { userIdAtom } from '@src/lib/stateJotai';
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -32,6 +35,23 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
 
 function Home() {
+  const [userId] = useAtom(userIdAtom);
+
+  const fetchDataWithUserId = async () => {
+    try {
+      const res = await axios.get(`https://www.assum.store/data?userId=${userId}/all`);
+      console.log(res.data);
+    } catch (err) {
+      console.error('서버 요청 실패:', err);
+    }
+  };
+
+  useEffect(() => {
+    if (userId) {
+      fetchDataWithUserId();
+    }
+  }, [userId]);
+
   const handleSearch = (searchTerm: string) => {
     console.log('검색어:', searchTerm);
     // 검색 로직 구현

@@ -20,7 +20,7 @@ export default function SignUp() {
 
   // 동의 여부를 저장하는 배열
   const [checkPolicy, setCheckPolicy] = useState<number[]>([]);
-  
+
   // 개별 동의 사항 체크 처리
   const handleSingleCheck = (checked: boolean, id: number) => {
     if (checked) {
@@ -29,7 +29,7 @@ export default function SignUp() {
       setCheckPolicy(checkPolicy.filter((el) => el !== id));
     }
   };
-  
+
   // 전체 동의 체크 처리
   const handleAllCheck = (checked: boolean) => {
     if (checked) {
@@ -83,6 +83,8 @@ export default function SignUp() {
       if (response.status === 200) {
         console.log(response);
         alert('회원가입 성공 🙌🏻');
+        //회원가입 성공 시 로그인으로 이동
+        window.location.href = "/login";
       } else {
         alert('회원가입에 실패했습니다.');
       }
@@ -189,15 +191,13 @@ export default function SignUp() {
             ></input>
             <h5>광고성 메시지, 이메일 뉴스레터 수신에 동의합니다 (선택)</h5>
           </div>
-          <Link to="/login" className={styles.signInLink}>
-            <button
-              className={allSelect ? styles.signInBtn1 : styles.signInBtn0}
-              disabled={allSelect ? false : true}
-              onClick={handleSignUp}
-            >
-              가입하기
-            </button>
-          </Link>
+          <button
+            className={allSelect ? styles.signInBtn1 : styles.signInBtn0}
+            disabled={allSelect ? false : true}
+            onClick={handleSignUp}
+          >
+            가입하기
+          </button>
           <Link to="/login">
             <button className={styles.closeBtn}>로그인 페이지로 돌아가기</button>
           </Link>

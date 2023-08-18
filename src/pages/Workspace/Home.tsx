@@ -3,7 +3,7 @@ import styles from "@src/styles/Home.module.css"
 import { FaMicrophone } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import axios from 'axios';
-import { useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { userIdAtom } from '@src/lib/stateJotai';
 
 interface SearchBarProps {
@@ -40,12 +40,14 @@ const handleSearch = (searchTerm: string) => {
 };
 
 function Home() {
-  const [userId] = useAtom(userIdAtom);
+  const userId = useAtomValue(userIdAtom);
+  console.log(userId);
 
   const fetchDataWithUserId = async () => {
     try {
       const res = await axios.get(`https://www.assum.store/${userId}/home`);
       console.log('홈으로 이동', res);
+
     } catch (err) {
       console.error('서버 요청 실패:', err);
     }

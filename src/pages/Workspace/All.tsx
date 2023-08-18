@@ -61,7 +61,7 @@ export default function All() {
   };
 
 
-  function NewFile() {
+  function NewFile1() {
     return (
       <div className={styles.newroot}>
         <div className={styles.newbody}>
@@ -70,12 +70,142 @@ export default function All() {
               <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
             </div>
             <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>새로운 파일 1</p>
-              <p className={styles.newfileSub}>6호 태풍 '카눈'이 북상하며 영남 내륙을 통과중이다. 태풍은 대구 북서쪽을 지나갔고, 북서쪽으로 이동하 ...</p>
+              <p className={styles.newfileName}>위메이드 "국내외 3개 게임사와 '위믹스 플레이' 온보딩 계약</p>
+              <p className={styles.newfileSub}>위메이드는 여러 국내외 게임사와 블록체인 게임 플랫폼 '위믹스 플레이' 온보딩(연동) 계약을 체결했다고 ...</p>
             </div>
           </div>
           <div className={styles.newfileDate}>
-            <p>2023.08.10 12:39</p>
+            <p>2023.08.18 11:46</p>
+          </div>
+          <div className={styles.newfileLength}>
+            <p>10분</p>
+          </div>
+        </div>
+        <hr className={styles.newbreakline}></hr>
+      </div>
+    );
+  }
+
+
+  function NewFile2() {
+    return (
+      <div className={styles.newroot}>
+        <div className={styles.newbody}>
+          <div className={styles.newfilesWrapper}>
+            <div className={styles.newicon}>
+              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
+            </div>
+            <div className={styles.newfileNameWrapper}>
+              <p className={styles.newfileName}>메시가 미국 '꼴찌'로 이적한 이유와 이적 결정 고백</p>
+              <p className={styles.newfileSub}>메시는 바르셀로나에서 떠나기로 결정한 후 파리 생제르맹(PSG)을 거부하고 미국의 인터 마이애미로 이 ...</p>
+            </div>
+          </div>
+          <div className={styles.newfileDate}>
+            <p>2023.08.18 10:39</p>
+          </div>
+          <div className={styles.newfileLength}>
+            <p>6분</p>
+          </div>
+        </div>
+        <hr className={styles.newbreakline}></hr>
+      </div>
+    );
+  }
+
+
+  function NewFile3() {
+    return (
+      <div className={styles.newroot}>
+        <div className={styles.newbody}>
+          <div className={styles.newfilesWrapper}>
+            <div className={styles.newicon}>
+              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
+            </div>
+            <div className={styles.newfileNameWrapper}>
+              <p className={styles.newfileName}>김하성, 내야수 최초 GG 가능성 높아져</p>
+              <p className={styles.newfileSub}>김하성이 1루와 3루에서 높은 수비 실력을 보여주며 내야수 최초로 골드글러브 수상 가능성을 높였다. 그 ...</p>
+            </div>
+          </div>
+          <div className={styles.newfileDate}>
+            <p>2023.08.18 10:37</p>
+          </div>
+          <div className={styles.newfileLength}>
+            <p>8분</p>
+          </div>
+        </div>
+        <hr className={styles.newbreakline}></hr>
+      </div>
+    );
+  }
+
+
+  function NewFile4() {
+    return (
+      <div className={styles.newroot}>
+        <div className={styles.newbody}>
+          <div className={styles.newfilesWrapper}>
+            <div className={styles.newicon}>
+              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
+            </div>
+            <div className={styles.newfileNameWrapper}>
+              <p className={styles.newfileName}>강원도, 태풍 '카눈' 피해지역에 응급 복구비 20억원 지원</p>
+              <p className={styles.newfileSub}>강원도는 제6호 태풍 '카눈'이 북상하면서 피해를 본 고성군 등에 응급 복구비 20억원을 긴급 지원한다고 ...</p>
+            </div>
+          </div>
+          <div className={styles.newfileDate}>
+            <p>2023.08.18 10:20</p>
+          </div>
+          <div className={styles.newfileLength}>
+            <p>11분</p>
+          </div>
+        </div>
+        <hr className={styles.newbreakline}></hr>
+      </div>
+    );
+  }
+
+
+  function NewFile5() {
+    return (
+      <div className={styles.newroot}>
+        <div className={styles.newbody}>
+          <div className={styles.newfilesWrapper}>
+            <div className={styles.newicon}>
+              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
+            </div>
+            <div className={styles.newfileNameWrapper}>
+              <p className={styles.newfileName}>셀트리온, 셀트리온헬스케어 흡수합병…관전 포인트는</p>
+              <p className={styles.newfileSub}>18일 셀트리온과 셀트리온헬스케어의 합병으로 증권가는 긍정적인 평가를 내렸다. 하지만 20일 오후 셀 ...</p>
+            </div>
+          </div>
+          <div className={styles.newfileDate}>
+            <p>2023.08.18  9:20</p>
+          </div>
+          <div className={styles.newfileLength}>
+            <p>4분</p>
+          </div>
+        </div>
+        <hr className={styles.newbreakline}></hr>
+      </div>
+    );
+  }
+
+
+  function NewFile6() {
+    return (
+      <div className={styles.newroot}>
+        <div className={styles.newbody}>
+          <div className={styles.newfilesWrapper}>
+            <div className={styles.newicon}>
+              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
+            </div>
+            <div className={styles.newfileNameWrapper}>
+              <p className={styles.newfileName}>50년 주담대' 시대 연 NH농협은행, 9월부터 판매 중단…"한도 소진</p>
+              <p className={styles.newfileSub}> NH농협은행이 50년 만기 주택담보대출(주담대) 상품을 이번달까지만 판매하기로 했다. 한도로 계획한 ...</p>
+            </div>
+          </div>
+          <div className={styles.newfileDate}>
+            <p>2023.08.18  9:05</p>
           </div>
           <div className={styles.newfileLength}>
             <p>12분</p>
@@ -105,9 +235,12 @@ export default function All() {
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            <NewFile />
-            <NewFile />
-            <NewFile />
+            <NewFile1 />
+            <NewFile2 />
+            <NewFile3 />
+            <NewFile4 />
+            <NewFile5 />
+            <NewFile6 />
           </div>
         </div>
       </div>

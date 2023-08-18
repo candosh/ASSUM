@@ -61,7 +61,7 @@ function Home() {
     }
   }, [userId]);
 
-  function NewFile() {
+  function NewFile1() {
     return (
       <div className={styles.newroot}>
         <div className={styles.newbody}>
@@ -70,15 +70,41 @@ function Home() {
               <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
             </div>
             <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>새로운 파일 1</p>
-              <p className={styles.newfileSub}>6호 태풍 '카눈'이 북상하며 영남 내륙을 통과중이다. 태풍은 대구 북서쪽을 지나갔고, 북서쪽으로 이동하 ...</p>
+              <p className={styles.newfileName}>위메이드 "국내외 3개 게임사와 '위믹스 플레이' 온보딩 계약</p>
+              <p className={styles.newfileSub}>위메이드는 여러 국내외 게임사와 블록체인 게임 플랫폼 '위믹스 플레이' 온보딩(연동) 계약을 체결했다고 ...</p>
             </div>
           </div>
           <div className={styles.newfileDate}>
-            <p>2023.08.10 12:39</p>
+            <p>2023.08.18 11:46</p>
           </div>
           <div className={styles.newfileLength}>
-            <p>12분</p>
+            <p>10분</p>
+          </div>
+        </div>
+        <hr className={styles.newbreakline}></hr>
+      </div>
+    );
+  }
+
+
+  function NewFile2() {
+    return (
+      <div className={styles.newroot}>
+        <div className={styles.newbody}>
+          <div className={styles.newfilesWrapper}>
+            <div className={styles.newicon}>
+              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
+            </div>
+            <div className={styles.newfileNameWrapper}>
+              <p className={styles.newfileName}>메시가 미국 '꼴찌'로 이적한 이유와 이적 결정 고백</p>
+              <p className={styles.newfileSub}>메시는 바르셀로나에서 떠나기로 결정한 후 파리 생제르맹(PSG)을 거부하고 미국의 인터 마이애미로 이...</p>
+            </div>
+          </div>
+          <div className={styles.newfileDate}>
+            <p>2023.08.18 10:39</p>
+          </div>
+          <div className={styles.newfileLength}>
+            <p>6분</p>
           </div>
         </div>
         <hr className={styles.newbreakline}></hr>
@@ -104,9 +130,8 @@ function Home() {
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            <NewFile />
-            <NewFile />
-            <NewFile />
+            <NewFile1 />
+            <NewFile2 />
           </div>
         </div>
       </div>

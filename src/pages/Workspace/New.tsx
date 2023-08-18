@@ -5,6 +5,7 @@ import { LiaPaperclipSolid } from "react-icons/lia";
 import axios from "axios";
 import { useAtom } from "jotai";
 import { dataKeywordArr, dataLink, dataSum, dataTitle } from '@src/lib/stateJotai';
+import SideNav from '@src/components/Wokspace/SideNav';
 
 function New() {
   const [inputValue, setInputValue] = useState('');
@@ -47,6 +48,7 @@ function New() {
 
   return (
     <>
+      <SideNav />
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>새로운 파일</div>
@@ -67,7 +69,7 @@ function New() {
               placeholder="링크를 첨부해주세요."
               className={styles.textbox}
             />
-            <Link to="/home/detail">
+            <Link to="/detail">
               <button onClick={handleSummary} className={styles.linkBtn}>요약하기</button>
             </Link>
           </div>

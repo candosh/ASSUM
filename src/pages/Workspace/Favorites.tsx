@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from "@src/styles/Favorites.module.css"
 import { BiSearch } from "react-icons/bi";
+import SideNav from '@src/components/Wokspace/SideNav';
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -38,6 +39,7 @@ function Favorites() {
 
   return (
     <>
+      <SideNav />
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>즐겨 찾기</div>

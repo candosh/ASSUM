@@ -6,6 +6,7 @@ import { FaMicrophone } from "react-icons/fa";
 import axios from 'axios';
 import { useAtom } from 'jotai';
 import { userIdAtom } from '@src/lib/stateJotai';
+import SideNav from '@src/components/Wokspace/SideNav';
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -87,7 +88,8 @@ export default function All() {
 
 
   return (
-    <>
+    <div>
+      <SideNav />
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>전체 파일</div>
@@ -109,6 +111,6 @@ export default function All() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

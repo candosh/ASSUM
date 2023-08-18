@@ -25,7 +25,7 @@ function LoginForm(): JSX.Element {
 
 	useEffect(() => {
 		if (userId) {
-			window.location.href = "/home";
+			window.location.href = "/new";
 		}
 	}, [userId]);
 

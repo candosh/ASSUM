@@ -6,6 +6,7 @@ import { getFormattedDate } from "src/components/Wokspace/Date.ts";
 import { useAtomValue } from "jotai";
 import { dataTitle, dataSum, dataKeywordArr, dataLink } from "@src/lib/stateJotai";
 import Loading from "./Loading";
+import SideNav from "@src/components/Wokspace/SideNav";
 
 const Detail = () => {
   const headerDate = getFormattedDate();
@@ -55,6 +56,7 @@ const Detail = () => {
 
   return (
     <>
+      <SideNav />
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.headertitle}>새로운 파일</div>

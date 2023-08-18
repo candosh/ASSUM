@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import axios from 'axios';
 import { useAtomValue } from 'jotai';
 import { userIdAtom } from '@src/lib/stateJotai';
+import SideNav from '@src/components/Wokspace/SideNav';
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -55,6 +56,7 @@ function Home() {
 
   useEffect(() => {
     if (userId) {
+      console.log("userId 로딩:", userId); // userId 값 확인
       fetchDataWithUserId();
     }
   }, [userId]);
@@ -86,6 +88,7 @@ function Home() {
 
   return (
     <>
+      <SideNav />
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>최근 파일</div>

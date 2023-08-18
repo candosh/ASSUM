@@ -24,12 +24,12 @@ const SideNav = () => {
 		},
 		{
 			name: "전체 파일",
-			path: "/home/all",
+			path: "/all",
 			icon: <GoFileDirectory className={styles.menuIcon} />,
 		},
 		{
 			name: "즐겨찾기",
-			path: "/home/favorites",
+			path: "/favorites",
 			icon: <GoStar className={styles.menuIcon} />,
 		},
 	];

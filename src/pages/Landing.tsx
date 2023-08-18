@@ -29,7 +29,7 @@ export default function info() {
               <div className={styles.loginSignup}>
                 <Link to="/login" className={styles.linkBtn}>로그인</Link> 
                 <p>/</p>
-                <Link to="/login" className={styles.linkBtn}>회원가입</Link>
+                <Link to="/signup" className={styles.linkBtn}>회원가입</Link>
               </div>
             </div>
             <div className={styles.section1Content}>
@@ -41,7 +41,7 @@ export default function info() {
                   <br/> 이젠 어썸으로 간략하고 핵심적인 내용만 쏙쏙 뽑아 들려드릴게요
                 </p>
               </div>
-              <Link to="/sidenav/home" className={styles.linkBtn}>
+              <Link to="/new" className={styles.linkBtn}>
                 <button className={styles.startBtn}>어썸 시작하기</button>
               </Link>
               <img src={iMac} alt="iMac" className={styles.iMackImg}/>           

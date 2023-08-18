@@ -4,6 +4,8 @@ import logo from "@src/assets/logo.png";
 import chevron from "@src/assets/img/icons8-셰브론-오른쪽-52.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useAtom } from 'jotai';
+import { userIdAtom } from "@src/lib/stateJotai";
 
 export default function Login(): JSX.Element {
 	return (
@@ -18,6 +20,7 @@ function LoginForm(): JSX.Element {
 	const [password, setPassword] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
+	const [, setUserId] = useAtom(userIdAtom);
 
 	// 이메일이 유효한 형식인지 검사하여 로그인 버튼 활성화
 	const isPassedLogin = (): void => {
@@ -43,7 +46,6 @@ function LoginForm(): JSX.Element {
 		setPassword(event.target.value);
 	};
 
-	// 로그인 버튼이 클릭되었을 때 api 요청
 	const handleLoginSubmit = async () => {
 		if (isActive && email !== "" && isActivePw && password !== "") {
 			axios.post('https://www.assum.store/login', {
@@ -52,9 +54,14 @@ function LoginForm(): JSX.Element {
 			})
 				.then((res) => {
 					console.log(res);
+					const userId: number = res.data;
+					setUserId(userId);
 					alert('로그인 성공 🙌🏻');
+					//로그인 성공 시 홈으로 이동
+					window.location.href = "/home";
 				})
 				.catch((err) => {
+					alert('로그인 실패😭 다시 시도해주세요');
 					console.error("로그인 실패", err);
 				});
 		}
@@ -116,18 +123,16 @@ function LoginForm(): JSX.Element {
 						}>
 						올바른 비밀번호를 입력해주세요
 					</p>
-					<Link to="/home" className={styles.loginBtn}>
-						<button
-							onClick={handleLoginSubmit}
-							className={
-								isActive && email !== "" && isActivePw && password !== ""
-									? styles.submitBtn
-									: styles.unactiveBtn
-							}
-							disabled={email === "" && password === "" ? true : false}>
-							로그인
-						</button>
-					</Link>
+					<button
+						onClick={handleLoginSubmit}
+						className={
+							isActive && email !== "" && isActivePw && password !== ""
+								? styles.submitBtn
+								: styles.unactiveBtn
+						}
+						disabled={email === "" && password === "" ? true : false}>
+						로그인
+					</button>
 					<Link to="/signup" className={styles.findBtn}>
 						<p className={styles.forgotten}>회원이 아니시라면</p>
 						<span>

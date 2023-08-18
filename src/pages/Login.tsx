@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "@src/styles/login.module.css"
 import logo from "@src/assets/logo.png";
 import chevron from "@src/assets/img/icons8-셰브론-오른쪽-52.png";
@@ -20,28 +20,31 @@ function LoginForm(): JSX.Element {
 	const [password, setPassword] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
-	const [storedUserId, setUserId] = useAtom(userIdAtom);
+	//const [userId] = useAtom(userIdAtom);
+	const [userId, setUserId] = useAtom(userIdAtom);
 
-	// 이메일이 유효한 형식인지 검사하여 로그인 버튼 활성화
+	useEffect(() => {
+		if (userId) {
+			window.location.href = "/home";
+		}
+	}, [userId]);
+
 	const isPassedLogin = (): void => {
 		email.includes("@") && email.length > 5 && email.includes(".")
 			? setIsActive(true)
 			: setIsActive(false);
 	};
 
-	// 비밀번호가 조건에 맞는지 검사하여 로그인 버튼 활성화
 	const isCorrectPassword = (): void => {
 		password.length > 7 && isActive
 			? setIsActivePw(true)
 			: setIsActivePw(false);
 	};
 
-	// 이메일 입력 시 상태 변수들을 업데이트
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setEmail(event.target.value);
 	};
 
-	// 비밀번호 입력 시 상태 변수들을 업데이트
 	const handleInputPw = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setPassword(event.target.value);
 	};
@@ -54,11 +57,9 @@ function LoginForm(): JSX.Element {
 			})
 				.then((res) => {
 					console.log(res);
-					const userId: number = res.data;
+					const userId: number = res.data.id;
 					setUserId(userId);
 					alert('로그인 성공 🙌🏻');
-					//로그인 성공 시 홈으로 이동
-					window.location.href = "/home";
 				})
 				.catch((err) => {
 					alert('로그인 실패😭 다시 시도해주세요');

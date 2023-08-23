@@ -54,14 +54,18 @@ function Home() {
     }
   };
 
+
+
   useEffect(() => {
-    if (userId) {
+    console.log("확인, userId : ", userId);
+    //초기값일 때도 에러를 보기 위해 undefined사용 함
+    if (userId !== undefined) {
       console.log("userId 로딩:", userId); // userId 값 확인
       fetchDataWithUserId();
     }
   }, [userId]);
 
-  function NewFile1() {
+  function NewFile() {
     return (
       <div className={styles.newroot}>
         <div className={styles.newbody}>
@@ -79,32 +83,6 @@ function Home() {
           </div>
           <div className={styles.newfileLength}>
             <p>10분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
-
-  function NewFile2() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>메시가 미국 '꼴찌'로 이적한 이유와 이적 결정 고백</p>
-              <p className={styles.newfileSub}>메시는 바르셀로나에서 떠나기로 결정한 후 파리 생제르맹(PSG)을 거부하고 미국의 인터 마이애미로 이...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18 10:39</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>6분</p>
           </div>
         </div>
         <hr className={styles.newbreakline}></hr>
@@ -130,8 +108,7 @@ function Home() {
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            <NewFile1 />
-            <NewFile2 />
+            <NewFile />
           </div>
         </div>
       </div>

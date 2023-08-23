@@ -3,10 +3,10 @@ import styles from "@src/styles/Detail.module.css"
 import { FaPlay, FaStop } from "react-icons/fa";
 import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
-import { useAtomValue } from "jotai";
-import { dataTitle, dataSum, dataKeywordArr, dataLink } from "@src/lib/stateJotai";
 import Loading from "./Loading";
 import SideNav from "@src/components/Wokspace/SideNav";
+import { useAtomValue } from "jotai";
+import { dataTitle, dataSum, dataKeywordArr, dataLink } from "@src/lib/stateJotai";
 
 const Detail = () => {
   const headerDate = getFormattedDate();
@@ -25,7 +25,6 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    // 데이터가 준비되었을 때만 컨텐츠 업데이트
     if (title && keyword && sum) {
       setContents({
         text: sum,

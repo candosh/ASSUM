@@ -42,18 +42,15 @@ const handleSearch = (searchTerm: string) => {
 
 function Home() {
   const userId = useAtomValue(userIdAtom);
-  console.log(userId);
-
   const fetchDataWithUserId = async () => {
     try {
       const res = await axios.get(`https://www.assum.store/${userId}/home`);
-      console.log('홈으로 이동', res);
+      console.log('home.tsx 서버 요청 성공', res);
 
     } catch (err) {
-      console.error('서버 요청 실패:', err);
+      console.error('home.tsx 서버 요청 실패:', err);
     }
   };
-
 
 
   useEffect(() => {

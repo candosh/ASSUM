@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "@src/styles/login.module.css"
 import logo from "@src/assets/logo.png";
 import chevron from "@src/assets/img/icons8-셰브론-오른쪽-52.png";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useAtom } from 'jotai';
 import { userIdAtom } from "@src/lib/stateJotai";
@@ -20,12 +20,12 @@ function LoginForm(): JSX.Element {
 	const [password, setPassword] = useState<string>("");
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [isActivePw, setIsActivePw] = useState<boolean>(false);
-	//const [userId] = useAtom(userIdAtom);
 	const [userId, setUserId] = useAtom(userIdAtom);
+	const navigation = useNavigate();
 
 	useEffect(() => {
 		if (userId) {
-			window.location.href = "/new";
+			navigation("/new");
 		}
 	}, [userId]);
 
@@ -56,8 +56,8 @@ function LoginForm(): JSX.Element {
 				password: password
 			})
 				.then((res) => {
-					console.log(res);
 					const userId: number = res.data;
+					console.log(res.data);
 					setUserId(userId);
 					alert('로그인 성공 🙌🏻');
 				})

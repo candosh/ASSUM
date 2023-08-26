@@ -28,7 +28,7 @@ export default function info() {
             <div className={styles.header}>
               <img src={logo} alt="logoImage" className={styles.headerLogo}></img>
               <div className={styles.loginSignup}>
-                <Link to="/login" className={styles.linkBtn}>로그인</Link> 
+                <Link to="/login" className={styles.linkBtn}>로그인</Link>
                 <p>/</p>
                 <Link to="/signup" className={styles.linkBtn}>회원가입</Link>
               </div>
@@ -39,13 +39,13 @@ export default function info() {
                 <img src={logo} alt="logo" />
                 <p>
                   정보를 얻기 위해 찾은 뉴스기사, 블로그 등 길고 복잡한 내용이 한눈에 안 들어오시죠?
-                  <br/> 이젠 어썸으로 간략하고 핵심적인 내용만 쏙쏙 뽑아 들려드릴게요
+                  <br /> 이젠 어썸으로 간략하고 핵심적인 내용만 쏙쏙 뽑아 들려드릴게요
                 </p>
               </div>
               <Link to="/new" className={styles.linkBtn}>
                 <button className={styles.startBtn}>어썸 시작하기</button>
               </Link>
-              <img src={iMac} alt="iMac" className={styles.iMackImg}/>           
+              <img src={iMac} alt="iMac" className={styles.iMackImg} />
             </div>
           </div>
           <Lottie
@@ -136,7 +136,7 @@ export default function info() {
           </p>
           <img src={People} alt="people" className={styles.section3People} />
           <img src={ArrowBottom} alt="arrow-bottom" className={styles.arrowBottom} />
-          <Link to="/home">
+          <Link to="/new">
             <div className={styles.Btnbox2}>
               <button className={styles.startBtn2}>어썸 시작하기</button>
             </div>

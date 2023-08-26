@@ -4,7 +4,7 @@ import styles from "@src/styles/New.module.css";
 import { LiaPaperclipSolid } from "react-icons/lia";
 import axios from "axios";
 import { useAtom } from "jotai";
-import { dataKeywordArr, dataLink, dataSum, dataTitle } from '@src/lib/stateJotai';
+import { dataKeywordArr, dataLink, dataSum, dataTitle, userIdAtom } from '@src/lib/stateJotai';
 import SideNav from '@src/components/Wokspace/SideNav';
 
 function New() {
@@ -13,38 +13,34 @@ function New() {
   const [, setKeywordArr] = useAtom(dataKeywordArr);
   const [, setSum] = useAtom(dataSum);
   const [, setLink] = useAtom(dataLink);
+  const [userId] = useAtom(userIdAtom);
 
+  const handleSummary = async () => {
+    axios.post(`https://www.assum.store/${userId}/url?url=${inputValue}`, {
+    }).then(
+      (res) => {
+        console.log(res);
+        const data: string = res.data;
+        const dataArray = data.split('\n')
+          .map(line => line.replace("제목: ", "").replace("키워드: ", "").replace("요약글: ", "")
+            .replace("제목 : ", "").replace("키워드 : ", "").replace("요약글 : ", ""))
+          .filter(item => item !== "");
+
+        setTitle(dataArray[0]);
+        setKeywordArr(dataArray[1]);
+        setSum(dataArray[2]);
+        setLink(inputValue);
+      },
+      (err) => {
+        console.error("API 요청 오류:", err);
+      }
+    )
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleSummary = async () => {
-    axios.post(
-      'https://www.assum.store/url',
-      new URLSearchParams({
-        url: inputValue
-      })
-    )
-      .then(
-        (res) => {
-          console.log(res);
-          const data: string = res.data;
-          const dataArray = data.split('\n')
-            .map(line => line.replace("제목: ", "").replace("키워드: ", "").replace("요약글: ", "").replace("제목 : ", "").replace("키워드 : ", "").replace("요약글 : ", ""))
-            .filter(item => item !== "");
-          // const keyword = dataArray[1].split(', ');
-
-          setTitle(dataArray[0]);
-          setKeywordArr(dataArray[1]);
-          setSum(dataArray[2]);
-          setLink(inputValue);
-        },
-        (err) => {
-          console.error("API 요청 오류:", err);
-        }
-      )
-  };
 
   return (
     <>

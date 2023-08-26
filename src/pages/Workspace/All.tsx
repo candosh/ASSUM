@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import styles from "@src/styles/All.module.css"
+import styles from "@src/styles/All.module.css";
 import { BiSearch } from "react-icons/bi";
-//import styles from "@src/styles/NewFile.module.css";
 import { FaMicrophone } from "react-icons/fa";
 import axios from 'axios';
-import { useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { userIdAtom } from '@src/lib/stateJotai';
 import SideNav from '@src/components/Wokspace/SideNav';
 
@@ -14,7 +13,6 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -36,186 +34,32 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   );
 };
 
-
 export default function All() {
-  const [userId] = useAtom(userIdAtom);
+  const userId = useAtomValue(userIdAtom);
+  const [fileData, setFileData] = useState<{ title: string }[]>([]);
 
   const fetchDataWithUserId = async () => {
     try {
       const res = await axios.get(`https://www.assum.store/${userId}/all`);
-      console.log('데이터 가져오기', res);
+      setFileData(res.data);
+      console.log('all.tsx 서버 요청 성공', res);
     } catch (err) {
-      console.error('서버 요청 실패:', err);
+      console.error('all.tsx 서버 요청 실패:', err);
     }
   };
 
+  //로그인 안했을 때는 초기값이 0일 테니
+  // if (userId == 0) 이걸 사용하면 될 것 같음, 이거 일때 ex. alert 띄우기
+  //우선 alert로 해놓겠음
+  //그리고 아래 return에서 보면 map으로 전체 리스트 보여주게 함
   useEffect(() => {
     if (userId) {
       fetchDataWithUserId();
     }
+    else if (userId == 0) {
+      alert('로그인 후 이용해주세요!')
+    }
   }, [userId]);
-
-  const handleSearch = (searchTerm: string) => {
-    console.log('검색어:', searchTerm);
-    // 검색 로직 구현
-  };
-
-
-  function NewFile1() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>위메이드 "국내외 3개 게임사와 '위믹스 플레이' 온보딩 계약</p>
-              <p className={styles.newfileSub}>위메이드는 여러 국내외 게임사와 블록체인 게임 플랫폼 '위믹스 플레이' 온보딩(연동) 계약을 체결했다고 ...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18 11:46</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>10분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
-
-  function NewFile2() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>메시가 미국 '꼴찌'로 이적한 이유와 이적 결정 고백</p>
-              <p className={styles.newfileSub}>메시는 바르셀로나에서 떠나기로 결정한 후 파리 생제르맹(PSG)을 거부하고 미국의 인터 마이애미로 이 ...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18 10:39</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>6분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
-
-  function NewFile3() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>김하성, 내야수 최초 GG 가능성 높아져</p>
-              <p className={styles.newfileSub}>김하성이 1루와 3루에서 높은 수비 실력을 보여주며 내야수 최초로 골드글러브 수상 가능성을 높였다. 그 ...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18 10:37</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>8분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
-
-  function NewFile4() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>강원도, 태풍 '카눈' 피해지역에 응급 복구비 20억원 지원</p>
-              <p className={styles.newfileSub}>강원도는 제6호 태풍 '카눈'이 북상하면서 피해를 본 고성군 등에 응급 복구비 20억원을 긴급 지원한다고 ...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18 10:20</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>11분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
-
-  function NewFile5() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>셀트리온, 셀트리온헬스케어 흡수합병…관전 포인트는</p>
-              <p className={styles.newfileSub}>18일 셀트리온과 셀트리온헬스케어의 합병으로 증권가는 긍정적인 평가를 내렸다. 하지만 20일 오후 셀 ...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18  9:20</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>4분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
-
-  function NewFile6() {
-    return (
-      <div className={styles.newroot}>
-        <div className={styles.newbody}>
-          <div className={styles.newfilesWrapper}>
-            <div className={styles.newicon}>
-              <FaMicrophone className={styles.newiconVoice}></FaMicrophone>
-            </div>
-            <div className={styles.newfileNameWrapper}>
-              <p className={styles.newfileName}>50년 주담대' 시대 연 NH농협은행, 9월부터 판매 중단…"한도 소진</p>
-              <p className={styles.newfileSub}> NH농협은행이 50년 만기 주택담보대출(주담대) 상품을 이번달까지만 판매하기로 했다. 한도로 계획한 ...</p>
-            </div>
-          </div>
-          <div className={styles.newfileDate}>
-            <p>2023.08.18  9:05</p>
-          </div>
-          <div className={styles.newfileLength}>
-            <p>12분</p>
-          </div>
-        </div>
-        <hr className={styles.newbreakline}></hr>
-      </div>
-    );
-  }
-
 
   return (
     <div>
@@ -223,7 +67,7 @@ export default function All() {
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>전체 파일</div>
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={() => { }} />
         </div>
         <div className={styles.body}>
           <div className={styles.titleWrapper}>
@@ -235,15 +79,41 @@ export default function All() {
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            <NewFile1 />
-            <NewFile2 />
-            <NewFile3 />
-            <NewFile4 />
-            <NewFile5 />
-            <NewFile6 />
+            {fileData.map((file, index) => (
+              <NewFileItem key={index} fileTitle={file.title} />
+            ))}
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+//아래 뿌려주는 부분 서버 수정 후 변경해줘야 함!
+//이거 수정 후 Home.tsx도 바꿔 놓겠습니다!
+function NewFileItem({ fileTitle }: { fileTitle: string }) {
+  return (
+    <div className={styles.newroot}>
+      <div className={styles.newbody}>
+        <div className={styles.newfilesWrapper}>
+          <div className={styles.newicon}>
+            <FaMicrophone className={styles.newiconVoice} />
+          </div>
+          <div className={styles.newfileNameWrapper}>
+            <p className={styles.newfileName}>{fileTitle}</p>
+            <p className={styles.newfileSub}>
+              전체 요약글
+            </p>
+          </div>
+        </div>
+        <div className={styles.newfileDate}>
+          <p>2023.08.18 11:46</p>
+        </div>
+        <div className={styles.newfileLength}>
+          <p>10분</p>
+        </div>
+      </div>
+      <hr className={styles.newbreakline} />
     </div>
   );
 }

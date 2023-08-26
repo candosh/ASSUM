@@ -8,14 +8,15 @@ import Shape3 from "@src/assets/anim/animation_shape3.json";
 import Shape4 from "@src/assets/anim/animation_shape4.json";
 import iMac from "@src/assets/img/iMac.png";
 import article1 from "@src/assets/img/article1.png";
+import MicAnim from "@src/assets/anim/animation_mic.json";
 import PlayAnim from "@src/assets/anim/animation_play1.json";
 import article3 from "@src/assets/img/article3.png";
+import Arrow from "@src/assets/img/blueArrow.png";
+import Mic from "@src/assets/img/blueMic.png";
+import AI from "@src/assets/img/blueAI.png";
 import People from "@src/assets/img/people.png";
 import ArrowBottom from "@src/assets/img/arrowBottom.png";
 import logoGrey from "@src/assets/logo-grey2.png";
-import article1T from "@src/assets/img/article1_text.png";
-import article2T from "@src/assets/img/article2_text.png";
-import article3T from "@src/assets/img/article3_text.png";
 
 export default function info() {
   return (
@@ -71,21 +72,58 @@ export default function info() {
         {/* section 2 */}
         <div className={styles.section2}>
           <div className={styles.article1}>
-            <img src={article1T} className={styles.article1T} />
-            <img src={article1} alt="article-img" className={styles.article_img} />
+            <div className={styles.articleContent}>
+              <div className={styles.articleTitle}>
+                링크 첨부, <br /> 버튼 클릭으로 <br /> 손쉽게 이용
+              </div>
+              <img src={Arrow} alt="article1-arrow" className={styles.article1Arrow} />
+              <div className={styles.articleSub}>
+                한눈에 들어오는 디자인, <br />
+                누구나 쉽게 익힐 수 있는 간단한 사용법으로 <br />
+                쉽고 빠르게 서비스를 이용할 수 있어요
+              </div>
+            </div>
+            <img src={article1} alt="article-img" className={styles.article_img}/>
           </div>
           <div className={styles.article2}>
-            <Lottie
-              loop
-              animationData={PlayAnim}
-              className={styles.articleImg}
-            />
-            <img src={article2T} className={styles.article2T} />
+            <div className={styles.articleImg}>
+              <Lottie
+                loop
+                animationData={MicAnim}
+                className={styles.micAnim}
+              />
+              <Lottie
+                loop
+                animationData={PlayAnim}
+                className={styles.playAnim}
+              />
+            </div>
+            <div className={styles.articleContent}>
+              <div className={styles.articleTitle}>
+                보지 않아도 <br /> 귀로 들을 수 있는 <br /> 음성 기능
+              </div>
+              <img src={Mic} alt="article2-mic" className={styles.article2Mic} />
+              <div className={styles.articleSub}>
+                재생 버튼을 눌러 음성 기능을 활용해 보세요 <br />
+                글을 읽는 게 어려운 사람들도 함께 이용할 수 있도록 <br />
+                요약된 내용을 음성으로 들을 수 있어요
+              </div>
+            </div>
           </div>
           <div className={styles.article3}>
-            <img src={article3T} className={styles.article3T} />
-            <img src={article3} alt="article-img" className={styles.article_img} />
-          </div>
+            <div className={styles.articleContent}>
+              <div className={styles.articleTitle}>
+                AI 요약 <br /> 길고 복잡한 내용을 <br /> 핵심만 쏙쏙 요약 정리
+              </div>
+              <img src={AI} alt="article3-ai" className={styles.article3AI} />
+              <div className={styles.articleSub}>
+                어썸의 AI 요약을 사용해 보세요<br />
+                제목, 키워드와 함께 핵심 내용만 간결하게 요약해주어<br />
+                쉽고 빠르게 내용을 이해할 수 있어요
+              </div>
+            </div>
+            <img src={article3} alt="article-img" className={styles.article_img}/>
+          </div>   
         </div>
         {/* section3 */}
         <div className={styles.section3}>

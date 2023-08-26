@@ -1,6 +1,7 @@
 .root {
   width: 119%;
   min-height: 3000px;
+  color: black;
 }
 .section1 {
   overflow: hidden;
@@ -25,24 +26,24 @@
   position: absolute;
   z-index: 1;
   transform: scale(0.65);
-  top: 100px;
+  top: 130px;
   left: -20px;
 }
 .shape3 {
   overflow: hidden;
   position: absolute;
   z-index: 0;
-  transform: scale(0.3);
-  top: -560px;
-  right: -20px;
+  transform: scale(0.35);
+  top: -540px;
+  right: -14px;
 }
 .shape4 {
   overflow: hidden;
   position: absolute;
   z-index: 1;
-  transform: scale(0.85);
-  bottom: -340px;
-  left: -160px;
+  transform: scale(0.9);
+  bottom: -380px;
+  left: -190px;
 }
 .others {
   display: flex;
@@ -51,6 +52,7 @@
   justify-content: space-around;
 }
 .header {
+  width: 72%;
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -60,7 +62,7 @@
   justify-content: space-between;
 }
 .headerLogo {
-  width: 10%;
+  width: 9%;
   height: auto;
 }
 .loginSignup {
@@ -86,23 +88,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding-top: 80px;
+  margin-bottom: 20px;
 }
 .pagetitle > p:nth-child(1) {
   font-size: 22px;
   font-weight: 800;
+  margin-bottom: 0px;
 }
 .pagetitle > img {
   width: 25%;
   height: auto;
+  margin: 0;
 }
 .pagetitle > p:nth-child(3) {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 32px;
+  margin-top: -8px;
 }
 .startBtn {
-  width: 250px;
-  height: 74px;
-  font-size: 20px;
+  width: 234px;
+  height: 68px;
+  font-size: 19px;
   font-weight: 700;
   color: #ffffff;
   border: none;
@@ -122,54 +130,100 @@
 
 /* section2 */
 .section2 {
-  min-height: 1600px;
+  min-height: 1300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  gap: 60px;
   align-items: center;
-  padding: 200px 130px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
+
 .article1 {
-  width: 80%;
-  margin: 30px 200px;
+  width: 72%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: 100px 0;
 }
-.article1T {
-  width: 40%;
-  height: auto;
-}
-.article2 {
-  width: 80%;
+.articleContent {
+  width: 48%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
+  text-align: left;
 }
-.articleImg {
-  width: 40%;
+.articleTitle {
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 68px;
+}
+.article1Arrow {
+  position: absolute;
+  z-index: -1;
+  width: 10%;
+  margin: 100px 0px 20px -70px;
   height: auto;
 }
-.article2T {
-  width: 40%;
-  height: auto;
-}
-.article3 {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.article3T {
-  width: 40%;
-  height: auto;
+.articleSub {
+  margin-top: 32px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 34px;
 }
 .article_img {
   width: 50%;
+  height: auto;
+  margin-right: -36px;
+}
+.article2 {
+  width: 72%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100px 0;
+}
+.articleImg {
+  width: 60%;
+  margin: 0;
+}
+.micAnim {
+  position: absolute;
+  z-index: 1;
+  width: 23%;
+  height: auto;
+  margin: -170px 0px 20px 50px;
+}
+.playAnim {
+  position: absolute;
+  z-index: 1;
+  width: 11%;
+  height: auto;
+  margin: 20px 0px 0px 220px;
+}
+.article2Mic {
+  position: absolute;
+  z-index: -1;
+  width: 11%;
+  margin: 12px 0px 10px 280px;
+  height: auto;
+}
+.article3 {
+  width: 72%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100px 0;
+}
+.article3AI {
+  position: absolute;
+  z-index: -1;
+  width: 13%;
+  margin: 0px 0px 10px 200px;
   height: auto;
 }
 
@@ -179,7 +233,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  padding-top: 100px;
   background: linear-gradient(0deg, #E9F9FF 0%, #F4FCFF 22.27%, #FCFEFF 44.27%, #FFF 100%);
 }
 .section3Title{
@@ -226,10 +280,10 @@
   overflow: hidden;
 }
 .footerLogo {
-  width: 10%;
+  width: 9%;
   height: auto;
   float: left;
-  margin: 80px 120px;
+  margin: 65px 120px;
 }
 .articleFooter {
   font-family: "Arimo_MED";

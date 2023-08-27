@@ -7,6 +7,7 @@ import Loading from "./Loading";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { useAtomValue } from "jotai";
 import { dataTitle, dataSum, dataKeywordArr, dataLink } from "@src/lib/stateJotai";
+import axios from "axios";
 
 const Detail = () => {
   const headerDate = getFormattedDate();
@@ -22,6 +23,23 @@ const Detail = () => {
     title: string;
     keyword: string[];
     link: string;
+  };
+  
+  const [fileInfo, setFileInfo] = useState<object>({
+    text: "",
+    title: "",
+    keyword: [],
+    link: "",
+  });
+  const saveFile = () => {
+    axios
+      .post("/api/saveFile", fileInfo)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -104,6 +122,15 @@ const Detail = () => {
             </a>
             <hr className={styles.breakline}></hr>
           </div>
+          <button
+            type="submit"
+            onClick={() => {
+              saveFile();
+            }}
+            className={styles.saveBtn}
+          >
+            저장하기
+          </button>
         </div>
       </div>
     </>

@@ -25,7 +25,7 @@ const Detail = () => {
     link: string;
   };
   
-  const [fileInfo, setFileInfo] = useState<object>({
+  const [fileInfo, ] = useState<object>({
     text: "",
     title: "",
     keyword: [],

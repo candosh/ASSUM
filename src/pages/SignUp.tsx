@@ -51,19 +51,23 @@ export default function SignUp() {
   // 비밀번호 확인
   const onChangePasswordConfirm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const passwordConfirmCurrent = e.target.value
-      setPasswordConfirm(passwordConfirmCurrent)
-
+      const passwordConfirmCurrent = e.target.value;
+      setPasswordConfirm(passwordConfirmCurrent);
+  
       if (password === passwordConfirmCurrent) {
-        setPasswordConfirmMessage('')
-        setIsPasswordConfirm(true)
+        setPasswordConfirmMessage('');
+        setIsPasswordConfirm(true);
       } else {
-        setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.')
-        setIsPasswordConfirm(false)
+        if (passwordConfirmCurrent === '') {
+          setPasswordConfirmMessage('');
+        } else {
+          setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
+        }
+        setIsPasswordConfirm(false);
       }
     },
     [password]
-  )
+  );
 
   // 체크박스 설정
   const [allCheck, setAllCheck] = useState<boolean>(false);
@@ -130,11 +134,6 @@ export default function SignUp() {
   }, [checkState1, checkState2, checkState3, checkState4])
 
   const handleSignUp = async () => {
-    if (password !== passwordConfirm) {
-      alert('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-
     try {
       const response = await axios.post('https://www.assum.store/signUp', {
         email,
@@ -167,7 +166,11 @@ export default function SignUp() {
               name="email"
               onChange={onChangeEmail}
               type="email"
-              className={styles.emailInputBox}
+              className={
+                isEmail || email === ""
+                  ? styles.emailInputBox
+                  : styles.emailInputBox1
+              }
               placeholder="이메일을 입력해주세요"
             ></input>
             {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
@@ -176,7 +179,11 @@ export default function SignUp() {
             name="password"
             onChange={onChangePassword}
             type="password"
-            className={styles.passwordInputBox1}
+            className={
+              isPassword || password === ""
+                ? styles.passwordInputBox
+                : styles.passwordInputBox1
+            }
             placeholder="비밀번호를 입력해주세요"
           ></input>
           {password.length > 0 && (
@@ -186,7 +193,11 @@ export default function SignUp() {
             name="passwordConfirm"
             onChange={onChangePasswordConfirm}
             type="password"
-            className={styles.passwordInputBox2}
+            className={
+              isPasswordConfirm || passwordConfirm === ""
+                ? styles.passwordConfirmInputBox
+                : styles.passwordConfirmInputBox1
+            }
             placeholder="비밀번호를 다시 한번 입력해주세요"
           ></input>
           {passwordConfirm.length > 0 && (
@@ -261,7 +272,7 @@ export default function SignUp() {
                 checkState1 &&
                 checkState2 &&
                 checkState3
-              ) || checkState4
+              )
             }
           >
             가입하기

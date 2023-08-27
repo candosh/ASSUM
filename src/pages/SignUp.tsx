@@ -1,79 +1,139 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "@src/styles/signUp.module.css";
 import axios from "axios";
 
-// export interface checkItems {
-//   checked: any;
-//   id: number;
-// }
-
 export default function SignUp() {
-  // 선택 동의 사항
-  const data = [
-    { id: 0, title: "선택 1" },
-    { id: 1, title: "선택 2" },
-    { id: 2, title: "선택 3" },
-    { id: 3, title: "선택 4" },
-    { id: 4, title: "선택 5" },
-  ];
-
-  // 동의 여부를 저장하는 배열
-  const [checkPolicy, setCheckPolicy] = useState<number[]>([]);
-
-  // 개별 동의 사항 체크 처리
-  const handleSingleCheck = (checked: boolean, id: number) => {
-    if (checked) {
-      setCheckPolicy((prev) => [...prev, id]);
-    } else {
-      setCheckPolicy(checkPolicy.filter((el) => el !== id));
-    }
-  };
-
-  // 전체 동의 체크 처리
-  const handleAllCheck = (checked: boolean) => {
-    if (checked) {
-      const idArray: number[] = [];
-      data.forEach((el) => idArray.push(el.id));
-      setCheckPolicy(idArray);
-    } else {
-      setCheckPolicy([]);
-      setBtnState(0);
-    }
-  };
-
-  // 개별 동의 사항 체크 여부 확인
-  const [, setBtnState] = useState<number>(0);
-  const [allSelect, setAllSelect] = useState<boolean>(false);
-  const [, setCheckState1] = useState<boolean>(false);
-  const [, setCheckState2] = useState<boolean>(false);
-  const [, setCheckState3] = useState<boolean>(false);
-
-
-  const isChecked = () => {
-    if (checkPolicy.includes(0)) {
-      setAllSelect(true);
-    } else if (
-      checkPolicy.includes(1) &&
-      checkPolicy.includes(2) &&
-      checkPolicy.includes(3)
-    ) {
-      setAllSelect(true);
-    }
-  };
-
-  //add: email,password state
-
+  //이름, 이메일, 비밀번호, 비밀번호 확인
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [passwordConfirm, setPasswordConfirm] = useState<string>('');
+  //오류메시지 상태저장
+  const [emailMessage, setEmailMessage] = useState<string>('');
+  const [passwordMessage, setPasswordMessage] = useState<string>('');
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState<string>('');
+  // 유효성 검사
+  const [isEmail, setIsEmail] = useState<boolean>(false);
+  const [isPassword, setIsPassword] = useState<boolean>(false);
+  const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean>(false);
+
+  // 이메일
+  const onChangeEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const emailRegex =
+      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+    const emailCurrent = e.target.value
+    setEmail(emailCurrent)
+
+    if (!emailRegex.test(emailCurrent)) {
+      setEmailMessage('올바른 이메일을 입력해주세요')
+      setIsEmail(false)
+    } else {
+      setEmailMessage('')
+      setIsEmail(true)
+    }
+  }, [])
+
+  // 비밀번호
+  const onChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/
+    const passwordCurrent = e.target.value
+    setPassword(passwordCurrent)
+
+    if (!passwordRegex.test(passwordCurrent)) {
+      setPasswordMessage('숫자+영문자 조합으로 8자리 이상 입력해주세요!')
+      setIsPassword(false)
+    } else {
+      setPasswordMessage('')
+      setIsPassword(true)
+    }
+  }, [])
+
+  // 비밀번호 확인
+  const onChangePasswordConfirm = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const passwordConfirmCurrent = e.target.value;
+      setPasswordConfirm(passwordConfirmCurrent);
+  
+      if (password === passwordConfirmCurrent) {
+        setPasswordConfirmMessage('');
+        setIsPasswordConfirm(true);
+      } else {
+        if (passwordConfirmCurrent === '') {
+          setPasswordConfirmMessage('');
+        } else {
+          setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
+        }
+        setIsPasswordConfirm(false);
+      }
+    },
+    [password]
+  );
+
+  // 체크박스 설정
+  const [allCheck, setAllCheck] = useState<boolean>(false);
+  const [checkState1, setCheckState1] = useState<boolean>(false);
+  const [checkState2, setCheckState2] = useState<boolean>(false);
+  const [checkState3, setCheckState3] = useState<boolean>(false);
+  const [checkState4, setCheckState4] = useState<boolean>(false);
+
+  const allBtnEvent =()=>{
+    if(allCheck === false) {
+      setAllCheck(true);
+      setCheckState1(true);
+      setCheckState2(true);
+      setCheckState3(true);
+      setCheckState4(true);
+    }else {
+      setAllCheck(false);
+      setCheckState1(false);
+      setCheckState2(false);
+      setCheckState3(false);
+      setCheckState4(false);
+    } 
+  };
+
+  const CheckBtnEvent1 =()=>{
+    if(checkState1 === false) {
+      setCheckState1(true)
+    }else {
+      setCheckState1(false)
+    }
+  };
+
+  const CheckBtnEvent2 =()=>{
+    if(checkState2 === false) {
+      setCheckState2(true)
+    }else {
+      setCheckState2(false)
+    }
+  };
+
+  const CheckBtnEvent3 =()=>{
+    if(checkState3 === false) {
+      setCheckState3(true)
+    }else {
+      setCheckState3(false)
+    }
+  };
+
+
+  const CheckBtnEvent4 =()=>{
+    if(checkState4 === false) {
+      setCheckState4(true)
+    }else {
+      setCheckState4(false)
+    }
+  };
+
+  useEffect(()=>{
+    if(checkState1===true && checkState2===true && checkState3===true && checkState4===true){
+      setAllCheck(true)
+    } else {
+      setAllCheck(false)
+    }
+  }, [checkState1, checkState2, checkState3, checkState4])
 
   const handleSignUp = async () => {
-    if (password !== confirmPassword) {
-      alert('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-
     try {
       const response = await axios.post('https://www.assum.store/signUp', {
         email,
@@ -93,108 +153,127 @@ export default function SignUp() {
     }
   };
 
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.Upper}>
-        <div className={styles.signInBox}>
+        <div className={styles.signUpBox}>
           <span>
-            <h4 className={styles.signInTitle}>회원가입</h4>
+            <h4 className={styles.signUpTitle}>회원가입</h4>
           </span>
           <h5>이메일</h5>
-          <input
-            type="email"
-            placeholder="이메일을 입력해주세요"
-            className={styles.emailInputBox}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-
+            <input
+              name="email"
+              onChange={onChangeEmail}
+              type="email"
+              className={
+                isEmail || email === ""
+                  ? styles.emailInputBox
+                  : styles.emailInputBox1
+              }
+              placeholder="이메일을 입력해주세요"
+            ></input>
+            {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
           <h5>비밀번호</h5>
           <input
+            name="password"
+            onChange={onChangePassword}
             type="password"
-            className={styles.passwordInputBox1}
+            className={
+              isPassword || password === ""
+                ? styles.passwordInputBox
+                : styles.passwordInputBox1
+            }
             placeholder="비밀번호를 입력해주세요"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
           ></input>
+          {password.length > 0 && (
+            <span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>
+          )}
           <input
+            name="passwordConfirm"
+            onChange={onChangePasswordConfirm}
             type="password"
-            className={styles.passwordInputBox2}
+            className={
+              isPasswordConfirm || passwordConfirm === ""
+                ? styles.passwordConfirmInputBox
+                : styles.passwordConfirmInputBox1
+            }
             placeholder="비밀번호를 다시 한번 입력해주세요"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
-          <p className={styles.passwordInfo}>
-            영문자 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상
-            16자 이하로 입력해주세요
-          </p>
+          {passwordConfirm.length > 0 && (
+            <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
+          )}
           <div className={styles.agreeForm1}>
-            <input
-              type="checkbox"
-              name="select-all"
-              onChange={(e) => {
-                handleAllCheck(e.target.checked);
-                allSelect ? setAllSelect(false) : setAllSelect(true);
-              }}
-              checked={checkPolicy.length === data.length ? true : false}
-            ></input>
-            <h5>전체 동의</h5>
+            <div className={styles.allWrapper}>
+              <input
+                type="checkbox"
+                id="all-check"
+                checked={allCheck}
+                onChange={allBtnEvent}
+              ></input>
+              <h5>전체 동의</h5>
+            </div>
+            <hr />
           </div>
-          <hr />
           <div className={styles.agreeForm2}>
             <input
               type="checkbox"
-              name="select-1"
-              onChange={(e) => {
-                handleSingleCheck(e.target.checked, 1);
-                setCheckState1(true);
-                isChecked();
-              }}
-              checked={checkPolicy.includes(1) ? true : false}
+              id="check1"
+              checked={checkState1}
+              onChange={CheckBtnEvent1}
             ></input>
             <h5>만 14세 이상입니다 (필수)</h5>
           </div>
           <div className={styles.agreeForm3}>
             <input
               type="checkbox"
-              name="select-2"
-              onChange={(e) => {
-                handleSingleCheck(e.target.checked, 2);
-                setCheckState2(true);
-                isChecked();
-              }}
-              checked={checkPolicy.includes(2) ? true : false}
+              id="check2"
+              checked={checkState2}
+              onChange={CheckBtnEvent2}
             ></input>
-            <h5>ASSUM 이용약관에 동의합니다 (필수)</h5>
+            <h5>원아워 이용약관에 동의합니다 (필수)</h5>
           </div>
           <div className={styles.agreeForm4}>
             <input
               type="checkbox"
-              name="select-3"
-              onChange={(e) => {
-                handleSingleCheck(e.target.checked, 3);
-                setCheckState3(true);
-                isChecked();
-              }}
-              checked={checkPolicy.includes(3) ? true : false}
+              id="check3"
+              checked={checkState3}
+              onChange={CheckBtnEvent3}
             ></input>
-            <h5>ASSUM 개인정보 수집 및 이용에 동의합니다 (필수)</h5>
+            <h5>원아워 개인정보 수집 및 이용에 동의합니다 (필수)</h5>
           </div>
           <div className={styles.agreeForm5}>
             <input
               type="checkbox"
-              name="select-4"
-              onChange={(e) => {
-                handleSingleCheck(e.target.checked, 3);
-              }}
-              checked={checkPolicy.includes(4) ? true : false}
+              id="check4"
+              checked={checkState4}
+              onChange={CheckBtnEvent4}
             ></input>
-            <h5>광고성 메시지, 이메일 뉴스레터 수신에 동의합니다 (선택)</h5>
+            <h5>광고성 SNS, 이메일 뉴스레터 수신에 동의합니다 (선택)</h5>
           </div>
           <button
-            className={allSelect ? styles.signInBtn1 : styles.signInBtn0}
-            disabled={allSelect ? false : true}
+            type="submit"
             onClick={handleSignUp}
+            className={
+              isEmail &&
+              isPassword &&
+              isPasswordConfirm &&
+              checkState1 &&
+              checkState2 &&
+              checkState3
+                ? styles.signUpBtn1
+                : styles.signUpBtn0
+            }
+            disabled={
+              !(
+                isEmail &&
+                isPassword &&
+                isPasswordConfirm &&
+                checkState1 &&
+                checkState2 &&
+                checkState3
+              )
+            }
           >
             가입하기
           </button>

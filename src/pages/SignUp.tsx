@@ -272,7 +272,7 @@ export default function SignUp() {
                 checkState1 &&
                 checkState2 &&
                 checkState3
-              )
+              ) || checkState4
             }
           >
             가입하기

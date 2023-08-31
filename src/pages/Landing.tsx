@@ -42,7 +42,7 @@ export default function info() {
                   <br /> 이젠 어썸으로 간략하고 핵심적인 내용만 쏙쏙 뽑아 들려드릴게요
                 </p>
               </div>
-              <Link to="/new" className={styles.linkBtn}>
+              <Link to="/login" className={styles.linkBtn}>
                 <button className={styles.startBtn}>어썸 시작하기</button>
               </Link>
               <img src={iMac} alt="iMac" className={styles.iMackImg} />
@@ -83,7 +83,7 @@ export default function info() {
                 쉽고 빠르게 서비스를 이용할 수 있어요
               </div>
             </div>
-            <img src={article1} alt="article-img" className={styles.article_img}/>
+            <img src={article1} alt="article-img" className={styles.article_img} />
           </div>
           <div className={styles.article2}>
             <div className={styles.articleImg}>
@@ -122,8 +122,8 @@ export default function info() {
                 쉽고 빠르게 내용을 이해할 수 있어요
               </div>
             </div>
-            <img src={article3} alt="article-img" className={styles.article_img}/>
-          </div>   
+            <img src={article3} alt="article-img" className={styles.article_img} />
+          </div>
         </div>
         {/* section3 */}
         <div className={styles.section3}>
@@ -136,7 +136,7 @@ export default function info() {
           </p>
           <img src={People} alt="people" className={styles.section3People} />
           <img src={ArrowBottom} alt="arrow-bottom" className={styles.arrowBottom} />
-          <Link to="/new">
+          <Link to="/login">
             <div className={styles.Btnbox2}>
               <button className={styles.startBtn2}>어썸 시작하기</button>
             </div>

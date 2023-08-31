@@ -33,7 +33,7 @@ const Detail = () => {
   });
   const saveFile = () => {
     axios
-      .post("/api/saveFile", fileInfo)
+      .post("https://www.assum.store//{userId}/save", fileInfo)
       .then((res) => {
         console.log(res);
       })

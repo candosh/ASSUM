@@ -4,10 +4,12 @@ import styles from "@src/styles/signUp.module.css";
 import axios from "axios";
 
 export default function SignUp() {
-  //이름, 이메일, 비밀번호, 비밀번호 확인
+  //이메일, 비밀번호, 비밀번호 확인, 나이
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [passwordConfirm, setPasswordConfirm] = useState<string>('');
+  const [age, setAge] = useState<number | null>(null);
+
   //오류메시지 상태저장
   const [emailMessage, setEmailMessage] = useState<string>('');
   const [passwordMessage, setPasswordMessage] = useState<string>('');
@@ -53,7 +55,7 @@ export default function SignUp() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const passwordConfirmCurrent = e.target.value;
       setPasswordConfirm(passwordConfirmCurrent);
-  
+
       if (password === passwordConfirmCurrent) {
         setPasswordConfirmMessage('');
         setIsPasswordConfirm(true);
@@ -69,6 +71,8 @@ export default function SignUp() {
     [password]
   );
 
+
+
   // 체크박스 설정
   const [allCheck, setAllCheck] = useState<boolean>(false);
   const [checkState1, setCheckState1] = useState<boolean>(false);
@@ -76,57 +80,57 @@ export default function SignUp() {
   const [checkState3, setCheckState3] = useState<boolean>(false);
   const [checkState4, setCheckState4] = useState<boolean>(false);
 
-  const allBtnEvent =()=>{
-    if(allCheck === false) {
+  const allBtnEvent = () => {
+    if (allCheck === false) {
       setAllCheck(true);
       setCheckState1(true);
       setCheckState2(true);
       setCheckState3(true);
       setCheckState4(true);
-    }else {
+    } else {
       setAllCheck(false);
       setCheckState1(false);
       setCheckState2(false);
       setCheckState3(false);
       setCheckState4(false);
-    } 
+    }
   };
 
-  const CheckBtnEvent1 =()=>{
-    if(checkState1 === false) {
+  const CheckBtnEvent1 = () => {
+    if (checkState1 === false) {
       setCheckState1(true)
-    }else {
+    } else {
       setCheckState1(false)
     }
   };
 
-  const CheckBtnEvent2 =()=>{
-    if(checkState2 === false) {
+  const CheckBtnEvent2 = () => {
+    if (checkState2 === false) {
       setCheckState2(true)
-    }else {
+    } else {
       setCheckState2(false)
     }
   };
 
-  const CheckBtnEvent3 =()=>{
-    if(checkState3 === false) {
+  const CheckBtnEvent3 = () => {
+    if (checkState3 === false) {
       setCheckState3(true)
-    }else {
+    } else {
       setCheckState3(false)
     }
   };
 
 
-  const CheckBtnEvent4 =()=>{
-    if(checkState4 === false) {
+  const CheckBtnEvent4 = () => {
+    if (checkState4 === false) {
       setCheckState4(true)
-    }else {
+    } else {
       setCheckState4(false)
     }
   };
 
-  useEffect(()=>{
-    if(checkState1===true && checkState2===true && checkState3===true && checkState4===true){
+  useEffect(() => {
+    if (checkState1 === true && checkState2 === true && checkState3 === true && checkState4 === true) {
       setAllCheck(true)
     } else {
       setAllCheck(false)
@@ -136,6 +140,7 @@ export default function SignUp() {
   const handleSignUp = async () => {
     try {
       const response = await axios.post('https://www.assum.store/signUp', {
+        age,
         email,
         password
       });
@@ -153,7 +158,6 @@ export default function SignUp() {
     }
   };
 
-
   return (
     <div className={styles.loginContainer}>
       <div className={styles.Upper}>
@@ -162,18 +166,18 @@ export default function SignUp() {
             <h4 className={styles.signUpTitle}>회원가입</h4>
           </span>
           <h5>이메일</h5>
-            <input
-              name="email"
-              onChange={onChangeEmail}
-              type="email"
-              className={
-                isEmail || email === ""
-                  ? styles.emailInputBox
-                  : styles.emailInputBox1
-              }
-              placeholder="이메일을 입력해주세요"
-            ></input>
-            {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
+          <input
+            name="email"
+            onChange={onChangeEmail}
+            type="email"
+            className={
+              isEmail || email === ""
+                ? styles.emailInputBox
+                : styles.emailInputBox1
+            }
+            placeholder="이메일을 입력해주세요"
+          ></input>
+          {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
           <h5>비밀번호</h5>
           <input
             name="password"
@@ -203,6 +207,20 @@ export default function SignUp() {
           {passwordConfirm.length > 0 && (
             <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
           )}
+          <h5>나이</h5>
+          <select
+            className={styles.ageScroll}
+            value={age || ''}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setAge(Number(e.target.value))}
+          >
+            <option value="">나이 입력(선택)</option>
+            {[...Array(87)].map((_, index) => (
+              <option key={index} value={index + 14}>
+                {index + 14}
+              </option>
+            ))}
+          </select>
+
           <div className={styles.agreeForm1}>
             <div className={styles.allWrapper}>
               <input
@@ -231,7 +249,7 @@ export default function SignUp() {
               checked={checkState2}
               onChange={CheckBtnEvent2}
             ></input>
-            <h5>원아워 이용약관에 동의합니다 (필수)</h5>
+            <h5>ASSUM 이용약관에 동의합니다 (필수)</h5>
           </div>
           <div className={styles.agreeForm4}>
             <input
@@ -240,7 +258,7 @@ export default function SignUp() {
               checked={checkState3}
               onChange={CheckBtnEvent3}
             ></input>
-            <h5>원아워 개인정보 수집 및 이용에 동의합니다 (필수)</h5>
+            <h5>ASSUM 개인정보 수집 및 이용에 동의합니다 (필수)</h5>
           </div>
           <div className={styles.agreeForm5}>
             <input
@@ -256,11 +274,11 @@ export default function SignUp() {
             onClick={handleSignUp}
             className={
               isEmail &&
-              isPassword &&
-              isPasswordConfirm &&
-              checkState1 &&
-              checkState2 &&
-              checkState3
+                isPassword &&
+                isPasswordConfirm &&
+                checkState1 &&
+                checkState2 &&
+                checkState3
                 ? styles.signUpBtn1
                 : styles.signUpBtn0
             }
@@ -271,8 +289,10 @@ export default function SignUp() {
                 isPasswordConfirm &&
                 checkState1 &&
                 checkState2 &&
-                checkState3
-              ) || checkState4
+                checkState3 &&
+                age !== null &&
+                age >= 14
+              )
             }
           >
             가입하기
@@ -282,6 +302,6 @@ export default function SignUp() {
           </Link>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

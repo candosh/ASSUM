@@ -71,8 +71,6 @@ export default function SignUp() {
     [password]
   );
 
-
-
   // 체크박스 설정
   const [allCheck, setAllCheck] = useState<boolean>(false);
   const [checkState1, setCheckState1] = useState<boolean>(false);

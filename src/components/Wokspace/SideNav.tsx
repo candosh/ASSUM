@@ -12,11 +12,6 @@ interface MenuProvider {
 	icon: ReactNode;
 }
 
-interface SubMenuProvider {
-	name: string;
-	path: string;
-}
-
 const SideNav = () => {
 	const [userId, setUserId] = useAtom(userIdAtom);
 	const navigation = useNavigate();
@@ -45,7 +40,7 @@ const SideNav = () => {
 		if (!userId && newUid) setUserId(Number(newUid));
 		else if (!userId && !newUid) {
 			alert('로그인 후 이용해주세요!');
-			navigation("/login")
+			navigation("/login");
 		}
 	}, [])
 

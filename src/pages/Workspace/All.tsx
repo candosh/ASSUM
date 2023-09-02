@@ -56,9 +56,9 @@ export default function All() {
     if (userId) {
       fetchDataWithUserId();
     }
-    else if (userId == 0) {
-      alert('로그인 후 이용해주세요!')
-    }
+    // else if (userId == 0) {
+    //   alert('로그인 후 이용해주세요!')
+    // }
   }, [userId]);
 
   return (

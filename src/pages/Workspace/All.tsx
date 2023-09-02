@@ -36,12 +36,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
 export default function All() {
   const userId = useAtomValue(userIdAtom);
-  const [fileData, setFileData] = useState<{ title: string }[]>([]);
+  const [listTitle, setListTitle] = useState<{ title: string }[]>([]);
+
 
   const fetchDataWithUserId = async () => {
     try {
       const res = await axios.get(`https://www.assum.store/${userId}/all`);
-      setFileData(res.data);
+      setListTitle(res.data);
       console.log('all.tsx 서버 요청 성공', res);
     } catch (err) {
       console.error('all.tsx 서버 요청 실패:', err);
@@ -66,13 +67,11 @@ export default function All() {
           <div className={styles.titleWrapper}>
             <div className={styles.titles}>
               <div className={styles.fileName}>파일 이름</div>
-              <div className={styles.fileDate}>생성 일자</div>
-              <div className={styles.fileLength}>길이</div>
             </div>
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            {fileData.map((file, index) => (
+            {listTitle.map((file, index) => (
               <NewFileItem key={index} fileTitle={file.title} />
             ))}
           </div>
@@ -94,16 +93,7 @@ function NewFileItem({ fileTitle }: { fileTitle: string }) {
           </div>
           <div className={styles.newfileNameWrapper}>
             <p className={styles.newfileName}>{fileTitle}</p>
-            <p className={styles.newfileSub}>
-              전체 요약글
-            </p>
           </div>
-        </div>
-        <div className={styles.newfileDate}>
-          <p>2023.08.18 11:46</p>
-        </div>
-        <div className={styles.newfileLength}>
-          <p>10분</p>
         </div>
       </div>
       <hr className={styles.newbreakline} />

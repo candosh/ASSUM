@@ -1,8 +1,10 @@
-import { ReactNode } from 'react';
-import { Link } from "react-router-dom";
+import { ReactNode, useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { GoHome, GoFileDirectory, GoStar, GoLink } from "react-icons/go";
 import logo from "@src/assets/logo.png";
 import styles from "@src/styles/SideNav.module.css";
+import { useAtom } from 'jotai';
+import { userIdAtom } from '@src/lib/stateJotai';
 
 interface MenuProvider {
 	name: string;
@@ -16,6 +18,9 @@ interface SubMenuProvider {
 }
 
 const SideNav = () => {
+	const [userId, setUserId] = useAtom(userIdAtom);
+	const navigation = useNavigate();
+
 	const menuData: MenuProvider[] = [
 		{
 			name: "홈",
@@ -45,6 +50,24 @@ const SideNav = () => {
 		},
 	];
 
+	useEffect(() => {
+		const newUid = localStorage.getItem("uid");
+
+		if (!userId && newUid) setUserId(Number(newUid));
+		else if (!userId && !newUid) {
+			alert('로그인 후 이용해주세요!');
+			navigation("/login")
+		}
+	}, [])
+
+	const handleLogout = () => {
+		if (confirm("정말 로그아웃 하시겠습니까?")) {
+			localStorage.removeItem("uid");
+			setUserId(0);
+			navigation("/login");
+		}
+	}
+
 	return (
 		<>
 			<div className={styles.navWrapper}>
@@ -66,13 +89,16 @@ const SideNav = () => {
 					))}
 				</div>
 				<div className={styles.subMenuWrapper}>
-					{subMenus.map((menu, index) => (
+					{/* {subMenus.map((menu, index) => (
 						<div className={styles.subMenuList} key={index}>
 							<Link to={menu.path} className={styles.subMenuList}>
 								{menu.name}
 							</Link>
 						</div>
-					))}
+					))} */}
+					<div className={styles.subMenuList} >
+						<span className={styles.subMenuList} onClick={handleLogout}>로그아웃</span>
+					</div>
 				</div>
 			</div>
 		</>

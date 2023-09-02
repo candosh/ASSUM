@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import styles from "@src/styles/New.module.css";
 import { LiaPaperclipSolid } from "react-icons/lia";
@@ -41,6 +41,16 @@ function New() {
     setInputValue(e.target.value);
   };
 
+  const initialize = () => {
+    setTitle("");
+    setKeywordArr("");
+    setSum("");
+    setLink("");
+  }
+
+  useEffect(() => {
+    initialize();
+  }, [])
 
   return (
     <>

@@ -59,6 +59,7 @@ function LoginForm(): JSX.Element {
 					const userId: number = res.data;
 					console.log(res.data);
 					setUserId(userId);
+					localStorage.setItem("uid", `${userId}`);
 					alert('로그인 성공 🙌🏻');
 				})
 				.catch((err) => {

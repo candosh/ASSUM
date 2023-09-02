@@ -6,7 +6,8 @@ import { getFormattedDate } from "src/components/Wokspace/Date.ts";
 import Loading from "./Loading";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { useAtomValue } from "jotai";
-import { dataTitle, dataSum, dataKeywordArr, dataLink } from "@src/lib/stateJotai";
+import { useAtom } from "jotai";
+import { dataTitle, dataSum, dataKeywordArr, dataLink,userIdAtom } from "@src/lib/stateJotai";
 import axios from "axios";
 
 const Detail = () => {
@@ -17,29 +18,13 @@ const Detail = () => {
   const sum = useAtomValue(dataSum);
   const link = useAtomValue(dataLink);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [userId] = useAtom(userIdAtom);
 
   type Contents = {
     text: string;
     title: string;
     keyword: string[];
     link: string;
-  };
-  
-  const [fileInfo, ] = useState<object>({
-    text: "",
-    title: "",
-    keyword: [],
-    link: "",
-  });
-  const saveFile = () => {
-    axios
-      .post("https://www.assum.store//{userId}/save", fileInfo)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   useEffect(() => {
@@ -52,6 +37,22 @@ const Detail = () => {
       });
     }
   }, [title, keyword, sum, link]);
+  
+  const saveFile = () => {
+    axios
+      .post(`https://www.assum.store/${userId}/save`, {
+        text: sum,
+        title: title,
+        keyword: keyword.split(', '),
+        link: link,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     window.speechSynthesis.getVoices();
@@ -70,7 +71,7 @@ const Detail = () => {
   if (!contents) {
     return <Loading />;
   }
-
+  
   return (
     <>
       <SideNav />

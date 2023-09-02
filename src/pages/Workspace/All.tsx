@@ -81,8 +81,6 @@ export default function All() {
   );
 }
 
-//아래 뿌려주는 부분 서버 수정 후 변경해줘야 함!
-//이거 수정 후 Home.tsx도 바꿔 놓겠습니다!
 function NewFileItem({ fileTitle }: { fileTitle: string }) {
   return (
     <div className={styles.newroot}>

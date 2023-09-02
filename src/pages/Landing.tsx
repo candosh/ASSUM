@@ -148,7 +148,7 @@ export default function info() {
           <p className={styles.articleFooter}>어썸</p>
           <div className={styles.member1}>
             <p className={styles.PL}>DESIGNER, FRONTEND DEVELOPER</p>
-            <p className={styles.DS}>강해솔</p>
+            <p className={styles.DS}> 강해솔</p>
           </div>
           <div className={styles.member2}>
             <p className={styles.PL}>FRONTEND DEVELOPER</p>
@@ -159,15 +159,11 @@ export default function info() {
             <p className={styles.BE}>박정우</p>
           </div>
           <div className={styles.member4}>
-            <p className={styles.PL}>PROJECT MANAGER</p>
-            <p className={styles.PM}>최신임</p>
-          </div>
-          <div className={styles.member5}>
-            <p className={styles.PL}>PROJECT MANAGER</p>
-            <p className={styles.PM}>정의민</p>
+            <p className={styles.PL}>BACKEND DEVELOPER</p>
+            <p className={styles.BE}>유승한</p>
           </div>
           <p className={styles.footerTitle}>
-            SOONGSIL UNIVERSITY LIKELION HACKATHON PROJECT
+            @ASSUM
           </p>
           <div className={styles.fhr}></div>
         </div>

@@ -3,6 +3,7 @@
   min-height: 3000px;
   color: black;
 }
+
 .section1 {
   overflow: hidden;
   display: flex;
@@ -13,6 +14,7 @@
   margin: 0 auto;
   min-height: 460px;
 }
+
 .shape1 {
   overflow: hidden;
   position: absolute;
@@ -21,6 +23,7 @@
   bottom: -160px;
   right: -150px;
 }
+
 .shape2 {
   overflow: hidden;
   position: absolute;
@@ -29,6 +32,7 @@
   top: 130px;
   left: -20px;
 }
+
 .shape3 {
   overflow: hidden;
   position: absolute;
@@ -37,6 +41,7 @@
   top: -540px;
   right: -14px;
 }
+
 .shape4 {
   overflow: hidden;
   position: absolute;
@@ -45,12 +50,14 @@
   bottom: -380px;
   left: -190px;
 }
+
 .others {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
+
 .header {
   width: 72%;
   font-size: 14px;
@@ -61,10 +68,12 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .headerLogo {
   width: 9%;
   height: auto;
 }
+
 .loginSignup {
   display: flex;
   flex-direction: row;
@@ -72,10 +81,12 @@
   justify-content: space-between;
   gap: 6px;
 }
+
 .linkBtn {
   text-decoration: none;
   color: #383838;
 }
+
 .section1Content {
   display: flex;
   flex-direction: column;
@@ -83,6 +94,7 @@
   justify-content: space-between;
   gap: 30px;
 }
+
 .pagetitle {
   display: flex;
   flex-direction: column;
@@ -91,22 +103,26 @@
   padding-top: 80px;
   margin-bottom: 20px;
 }
-.pagetitle > p:nth-child(1) {
+
+.pagetitle>p:nth-child(1) {
   font-size: 22px;
   font-weight: 800;
   margin-bottom: 0px;
 }
-.pagetitle > img {
+
+.pagetitle>img {
   width: 25%;
   height: auto;
   margin: 0;
 }
-.pagetitle > p:nth-child(3) {
+
+.pagetitle>p:nth-child(3) {
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
   margin-top: -8px;
 }
+
 .startBtn {
   width: 234px;
   height: 68px;
@@ -119,10 +135,12 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
 .iMackImg {
   width: 70%;
   height: auto;
 }
+
 .section1Logo {
   width: 10%;
   height: auto;
@@ -147,6 +165,7 @@
   justify-content: space-between;
   margin: 100px 0;
 }
+
 .articleContent {
   width: 48%;
   display: flex;
@@ -155,11 +174,13 @@
   justify-content: space-between;
   text-align: left;
 }
+
 .articleTitle {
   font-size: 50px;
   font-weight: 800;
   line-height: 68px;
 }
+
 .article1Arrow {
   position: absolute;
   z-index: -1;
@@ -167,17 +188,20 @@
   margin: 100px 0px 20px -70px;
   height: auto;
 }
+
 .articleSub {
   margin-top: 32px;
   font-size: 22px;
   font-weight: 500;
   line-height: 34px;
 }
+
 .article_img {
   width: 50%;
   height: auto;
   margin-right: -36px;
 }
+
 .article2 {
   width: 72%;
   display: flex;
@@ -186,10 +210,12 @@
   justify-content: space-between;
   margin: 100px 0;
 }
+
 .articleImg {
   width: 60%;
   margin: 0;
 }
+
 .micAnim {
   position: absolute;
   z-index: 1;
@@ -197,6 +223,7 @@
   height: auto;
   margin: -170px 0px 20px 50px;
 }
+
 .playAnim {
   position: absolute;
   z-index: 1;
@@ -204,6 +231,7 @@
   height: auto;
   margin: 20px 0px 0px 220px;
 }
+
 .article2Mic {
   position: absolute;
   z-index: -1;
@@ -211,6 +239,7 @@
   margin: 12px 0px 10px 280px;
   height: auto;
 }
+
 .article3 {
   width: 72%;
   display: flex;
@@ -219,6 +248,7 @@
   justify-content: space-between;
   margin: 100px 0;
 }
+
 .article3AI {
   position: absolute;
   z-index: -1;
@@ -236,11 +266,13 @@
   padding-top: 100px;
   background: linear-gradient(0deg, #E9F9FF 0%, #F4FCFF 22.27%, #FCFEFF 44.27%, #FFF 100%);
 }
-.section3Title{
+
+.section3Title {
   font-size: 48px;
   font-weight: 800;
   line-height: 66px;
 }
+
 .section3Text {
   font-size: 30px;
   font-weight: 700;
@@ -249,15 +281,18 @@
   color: #00BFFF;
   margin-bottom: 50px;
 }
+
 .section3People {
   width: 62%;
   height: auto;
 }
+
 .arrowBottom {
   width: 2.6%;
   height: auto;
   margin: 60px auto;
 }
+
 .startBtn2 {
   width: 250px;
   height: 74px;
@@ -279,12 +314,14 @@
   margin: 0 auto;
   overflow: hidden;
 }
+
 .footerLogo {
   width: 9%;
   height: auto;
   float: left;
   margin: 65px 120px;
 }
+
 .articleFooter {
   font-family: "Arimo_MED";
   font-weight: 700;
@@ -294,75 +331,74 @@
   left: 120px;
   top: 110px;
 }
+
 .member1 {
   position: absolute;
   top: 160px;
   left: 120px;
 }
-.member1 > p {
+
+.member1>p {
   display: inline-block;
 }
+
 .PL {
   font-size: 16px;
   font-family: "Arimo_MED";
   letter-spacing: -1px;
 }
+
 .DS {
   font-size: 16px;
   font-family: "Arimo_MED";
   letter-spacing: -1px;
-  margin-left: 40px;
+  margin-left: 46px;
 }
+
 .FE {
   font-size: 16px;
   font-family: "Arimo_MED";
   letter-spacing: -1px;
-  margin-left: 114px;
+  margin-left: 115px;
 }
+
 .BE {
   font-size: 16px;
   font-family: "Arimo_MED";
   letter-spacing: -1px;
   margin-left: 125px;
 }
-.PM {
-  font-size: 16px;
-  font-family: "Arimo_MED";
-  letter-spacing: -1px;
-  margin-left: 137px;
-}
-.member2 > p {
+
+.member2>p {
   display: inline-block;
 }
-.member3 > p {
+
+.member3>p {
   display: inline-block;
 }
+
 .member2 {
   position: absolute;
   left: 120px;
   top: 190px;
 }
+
 .member3 {
   position: absolute;
   left: 120px;
   top: 220px;
 }
+
 .member4 {
   position: absolute;
   left: 120px;
   top: 250px;
 }
-.member5 {
-  position: absolute;
-  left: 120px;
-  top: 280px;
-}
-.member4 > p {
+
+.member4>p {
   display: inline-block;
 }
-.member5 > p {
-  display: inline-block;
-}
+
 .footerTitle {
   font-family: "Arimo_RGR";
   letter-spacing: -1px;
@@ -371,6 +407,7 @@
   left: 120px;
   font-size: 16px;
 }
+
 .fhr {
   position: absolute;
   bottom: 70px;

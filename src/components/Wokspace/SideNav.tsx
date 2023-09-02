@@ -39,17 +39,6 @@ const SideNav = () => {
 		},
 	];
 
-	const subMenus: SubMenuProvider[] = [
-		{
-			name: "로그인",
-			path: "/login"
-		},
-		{
-			name: "회원가입",
-			path: "/signup"
-		},
-	];
-
 	useEffect(() => {
 		const newUid = localStorage.getItem("uid");
 

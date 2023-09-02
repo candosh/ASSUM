@@ -48,10 +48,6 @@ export default function All() {
     }
   };
 
-  //로그인 안했을 때는 초기값이 0일 테니
-  // if (userId == 0) 이걸 사용하면 될 것 같음, 이거 일때 ex. alert 띄우기
-  //우선 alert로 해놓겠음
-  //그리고 아래 return에서 보면 map으로 전체 리스트 보여주게 함
   useEffect(() => {
     if (userId) {
       fetchDataWithUserId();

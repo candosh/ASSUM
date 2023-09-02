@@ -78,16 +78,7 @@ const SideNav = () => {
 					))}
 				</div>
 				<div className={styles.subMenuWrapper}>
-					{/* {subMenus.map((menu, index) => (
-						<div className={styles.subMenuList} key={index}>
-							<Link to={menu.path} className={styles.subMenuList}>
-								{menu.name}
-							</Link>
-						</div>
-					))} */}
-					<div className={styles.subMenuList} >
-						<span className={styles.subMenuList} onClick={handleLogout}>로그아웃</span>
-					</div>
+					<span className={styles.subMenuList} onClick={handleLogout}>로그아웃</span>
 				</div>
 			</div>
 		</>

@@ -12,11 +12,6 @@ interface MenuProvider {
 	icon: ReactNode;
 }
 
-interface SubMenuProvider {
-	name: string;
-	path: string;
-}
-
 const SideNav = () => {
 	const [userId, setUserId] = useAtom(userIdAtom);
 	const navigation = useNavigate();
@@ -39,24 +34,13 @@ const SideNav = () => {
 		},
 	];
 
-	const subMenus: SubMenuProvider[] = [
-		{
-			name: "로그인",
-			path: "/login"
-		},
-		{
-			name: "회원가입",
-			path: "/signup"
-		},
-	];
-
 	useEffect(() => {
 		const newUid = localStorage.getItem("uid");
 
 		if (!userId && newUid) setUserId(Number(newUid));
 		else if (!userId && !newUid) {
 			alert('로그인 후 이용해주세요!');
-			navigation("/login")
+			navigation("/login");
 		}
 	}, [])
 
@@ -89,16 +73,7 @@ const SideNav = () => {
 					))}
 				</div>
 				<div className={styles.subMenuWrapper}>
-					{/* {subMenus.map((menu, index) => (
-						<div className={styles.subMenuList} key={index}>
-							<Link to={menu.path} className={styles.subMenuList}>
-								{menu.name}
-							</Link>
-						</div>
-					))} */}
-					<div className={styles.subMenuList} >
-						<span className={styles.subMenuList} onClick={handleLogout}>로그아웃</span>
-					</div>
+					<span className={styles.subMenuList} onClick={handleLogout}>로그아웃</span>
 				</div>
 			</div>
 		</>

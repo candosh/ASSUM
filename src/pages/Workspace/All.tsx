@@ -16,7 +16,7 @@ interface File {
   title: string;
   keyword: string[];
   link: string;
-  text: string;
+  text?: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {

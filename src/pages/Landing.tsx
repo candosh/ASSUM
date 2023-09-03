@@ -8,11 +8,11 @@ import Shape3 from "@src/assets/anim/animation_shape3.json";
 import Shape4 from "@src/assets/anim/animation_shape4.json";
 import iMac from "@src/assets/img/iMac.png";
 import article1 from "@src/assets/img/article1.png";
-import MicAnim from "@src/assets/anim/animation_mic.json";
-import PlayAnim from "@src/assets/anim/animation_play1.json";
+// import MicAnim from "@src/assets/anim/animation_mic.json";
+// import PlayAnim from "@src/assets/anim/animation_play1.json";
 import article3 from "@src/assets/img/article3.png";
 import Arrow from "@src/assets/img/blueArrow.png";
-import Mic from "@src/assets/img/blueMic.png";
+// import Mic from "@src/assets/img/blueMic.png";
 import AI from "@src/assets/img/blueAI.png";
 import People from "@src/assets/img/people.png";
 import ArrowBottom from "@src/assets/img/arrowBottom.png";
@@ -85,6 +85,7 @@ export default function info() {
             </div>
             <img src={article1} alt="article-img" className={styles.article_img} />
           </div>
+          {/*
           <div className={styles.article2}>
             <div className={styles.articleImg}>
               <Lottie
@@ -110,6 +111,7 @@ export default function info() {
               </div>
             </div>
           </div>
+          */}
           <div className={styles.article3}>
             <div className={styles.articleContent}>
               <div className={styles.articleTitle}>
@@ -148,7 +150,7 @@ export default function info() {
           <p className={styles.articleFooter}>어썸</p>
           <div className={styles.member1}>
             <p className={styles.PL}>DESIGNER, FRONTEND DEVELOPER</p>
-            <p className={styles.DS}> 강해솔</p>
+            <p className={styles.DS}>강해솔</p>
           </div>
           <div className={styles.member2}>
             <p className={styles.PL}>FRONTEND DEVELOPER</p>
@@ -159,11 +161,15 @@ export default function info() {
             <p className={styles.BE}>박정우</p>
           </div>
           <div className={styles.member4}>
-            <p className={styles.PL}>BACKEND DEVELOPER</p>
-            <p className={styles.BE}>유승한</p>
+            <p className={styles.PL}>PROJECT MANAGER</p>
+            <p className={styles.PM}>최신임</p>
+          </div>
+          <div className={styles.member5}>
+            <p className={styles.PL}>PROJECT MANAGER</p>
+            <p className={styles.PM}>정의민</p>
           </div>
           <p className={styles.footerTitle}>
-            @ASSUM
+            SOONGSIL UNIVERSITY LIKELION HACKATHON PROJECT
           </p>
           <div className={styles.fhr}></div>
         </div>

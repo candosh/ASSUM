@@ -15,6 +15,7 @@ type ApiResponse = {
 
 export default function Home() {
   const [dataList, setDataList] = useState<ApiResponse[]>([]);
+  const [selectedAge, setSelectedAge] = useState<number | null>(null);
 
   const fetchKeywordRanking = async () => {
     try {
@@ -29,6 +30,14 @@ export default function Home() {
     }
   };
 
+  // 선택된 연령대에 해당하는 데이터를 필터링하여 반환
+  const getFilteredData = () => {
+    if (selectedAge === null) {
+      return dataList; // 선택된 연령대가 없으면 전체 데이터 반환
+    }
+    return dataList.filter(data => data.age === selectedAge);
+  };
+
   useEffect(() => {
     fetchKeywordRanking();
   }, []);
@@ -40,25 +49,33 @@ export default function Home() {
         <div className={styles.header}>
           <div className={styles.title}>요약 키워드 순위</div>
         </div>
-        <div>
-          <p><h3>나이대별 키워드 순위</h3></p>
-        </div>
-        <div>
-          {dataList.map(data => (
-            <div key={data.age}>
-              {/* 60 이상의 나이는 "60대 이상"으로 표시, 그 외는 "xx대"로 표시 */}
-              <h3>{data.age >= 60 ? '60대 이상' : `${data.age}대`}</h3>
-              <ul>
-                {data.keywordRanks.slice(0, 10).map((rank, index) => (
-                  <li key={index}>
-                    <span className={styles.rank}>{index + 1}위</span>
-                    <span> {rank.keyword} </span>
-                    <span> +{rank.count} </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className={styles.keywordBox}>
+          <div>
+            <p><h3>나이대별 키워드 순위</h3></p>
+          </div>
+          <div>
+            <button onClick={() => setSelectedAge(10)}>10대</button>
+            <button onClick={() => setSelectedAge(20)}>20대</button>
+            <button onClick={() => setSelectedAge(30)}>30대</button>
+            <button onClick={() => setSelectedAge(40)}>40대</button>
+            <button onClick={() => setSelectedAge(50)}>50대</button>
+            <button onClick={() => setSelectedAge(60)}>60대 이상</button>
+          </div>
+          <div className={styles.keywords}>
+            {getFilteredData().map(data => (
+              <div key={data.age}>
+                <ul>
+                  {data.keywordRanks.slice(0, 10).map((rank, index) => (
+                    <li key={index} className={styles.indexBox}>
+                      <span className={styles.rank}>{index + 1}위</span>
+                      <span> {rank.keyword} </span>
+                      <span> +{rank.count} </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

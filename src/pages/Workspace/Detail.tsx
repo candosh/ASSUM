@@ -48,6 +48,8 @@ const Detail = () => {
       })
       .then((res) => {
         console.log(res);
+        alert('저장되었습니다!');
+        window.location.href = "/all";
       })
       .catch((err) => {
         console.log(err);

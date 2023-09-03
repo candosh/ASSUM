@@ -69,6 +69,13 @@ button:not(:last-child) {
   margin-right: 12px;
 }
 
+.selectedButton {
+  background-color: #00BFFF;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+}
+
 .keywords {
   width: 70%;
   margin-top: 20px;

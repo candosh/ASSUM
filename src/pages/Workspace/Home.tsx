@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from "@src/styles/Home.module.css"
 import axios from 'axios';
 import SideNav from '@src/components/Wokspace/SideNav';
-import WordCloud from 'react-wordcloud';
+import WordCloud, { Options } from 'react-wordcloud';
 
 type KeywordRank = {
   keyword: string;
@@ -86,6 +86,28 @@ export default function Home() {
     }));
   };
 
+  const wordCloudOptions: Options = {
+    rotations: 3,
+    fontSizes: [20, 60],
+    colors: ["#E91E63", "#FFC107", "#FF9800","#F44336", 
+    "#CDDC39", "#4CAF50","#00BCD4", "#2196F3", "#673AB7", 
+    "#E040FB","#009688","#00bfff","#9C27B0"],
+    deterministic: true,
+    enableOptimizations: true,
+    enableTooltip: true,
+    fontFamily: "SUIT Variable",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    padding: 2,
+    rotationAngles: [0, 0],
+    scale: 'linear',
+    spiral: 'archimedean',
+    svgAttributes: {},
+    textAttributes: {},
+    tooltipOptions: {},
+    transitionDuration: 0
+  };
+
   return (
     <>
       <SideNav />
@@ -98,12 +120,18 @@ export default function Home() {
             {selectedAge !== null ? (
               <div className={styles.wordCloud}>
                 <h3>{selectedAge === 0 ? "전체 워드 클라우드" : `${selectedAge}대 워드 클라우드`}</h3>
-                <WordCloud words={convertToWords(getFilteredData()[0]?.keywordRanks)} />
+                <WordCloud 
+                  words={convertToWords(getFilteredData()[0]?.keywordRanks.slice(0,60))} 
+                  options={wordCloudOptions}
+                />
               </div>
             ) : (
               <div className={styles.wordCloud}>
                 <h3>전체 워드 클라우드</h3>
-                <WordCloud words={convertToWords(dataList.find(data => data.age === 0)?.keywordRanks || [])} />
+                <WordCloud 
+                  words={convertToWords(dataList.find(data => data.age === 0)?.keywordRanks.slice(0,60) || [])} 
+                  options={wordCloudOptions}
+                />
               </div>
             )}
           </div>

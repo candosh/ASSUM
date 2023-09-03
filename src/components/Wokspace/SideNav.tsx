@@ -48,7 +48,7 @@ const SideNav = () => {
 		if (confirm("정말 로그아웃 하시겠습니까?")) {
 			localStorage.removeItem("uid");
 			setUserId(0);
-			navigation("/login");
+			navigation("/");
 		}
 	}
 

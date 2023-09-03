@@ -16,15 +16,26 @@ function New() {
   const [userId] = useAtom(userIdAtom);
 
   const handleSummary = async () => {
+    if (inputValue.trim() === '') {
+      // inputValue가 비어 있을 때 알림 창 표시
+      alert('링크를 첨부해주세요.');
+      return;
+    } 
     axios.post(`https://www.assum.store/${userId}/url?url=${inputValue}`, {
     }).then(
       (res) => {
         console.log(res);
         const data: string = res.data;
         const dataArray = data.split('\n')
-          .map(line => line.replace("제목: ", "").replace("키워드: ", "").replace("요약글: ", "")
-            .replace("제목 : ", "").replace("키워드 : ", "").replace("요약글 : ", ""))
-          .filter(item => item !== "");
+          .map(line => 
+            line
+              .replace("제목: ", "")
+              .replace("키워드: ", "")
+              .replace("요약글: ", "")
+              .replace("제목 : ", "")
+              .replace("키워드 : ", "")
+              .replace("요약글 : ", "")
+          ).filter(item => item !== "");
 
         setTitle(dataArray[0]);
         setKeywordArr(dataArray[1]);

@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { GoHome, GoFileDirectory, GoStar, GoLink } from "react-icons/go";
+import { GoHome, GoFileDirectory, GoLink } from "react-icons/go";
+// import { GoStar } from "react-icons/go";
 import logo from "@src/assets/logo.png";
 import styles from "@src/styles/SideNav.module.css";
 import { useAtom } from 'jotai';
@@ -27,11 +28,11 @@ const SideNav = () => {
 			path: "/all",
 			icon: <GoFileDirectory className={styles.menuIcon} />,
 		},
-		{
+		/*{
 			name: "즐겨찾기",
 			path: "/favorites",
 			icon: <GoStar className={styles.menuIcon} />,
-		},
+		},*/
 	];
 
 	useEffect(() => {

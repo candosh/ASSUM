@@ -70,7 +70,7 @@ export default function All() {
   }, [userId]);
 
   // 파일 클릭 시 모달 열기
-  const handleFileClick = (file:File) => {
+  const handleFileClick = (file: File) => {
     setSelectedFile(file); // 선택한 파일 정보 저장
     setIsModalOpen(true); // 모달 열기
   };
@@ -99,11 +99,11 @@ export default function All() {
           <div className={styles.filesWrapper}>
             {list.slice().reverse().map((file, index) => (
               <div key={index} onClick={() => handleFileClick(file)}>
-                <NewFileItem 
-                  key={index} 
-                  fileTitle={file.title} 
-                  fileKeyword={file.keyword} 
-                  fileLink={file.link} 
+                <NewFileItem
+                  key={index}
+                  fileTitle={file.title}
+                  fileKeyword={file.keyword}
+                  fileLink={file.link}
                 />
               </div>
             ))}
@@ -139,7 +139,7 @@ function NewFileItem({ fileTitle, fileKeyword, fileLink }: { fileTitle: string, 
         </div>
         <div className={styles.newLink}>
           <a href={fileLink} target="_blank" rel="noopener noreferrer">원문 링크</a>
-          <hr/>
+          <hr />
         </div>
       </div>
       <hr className={styles.newbreakline} />

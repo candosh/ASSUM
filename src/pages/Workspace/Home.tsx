@@ -132,6 +132,7 @@ export default function Home() {
             ) : (
               <div className={styles.wordCloud}>
                 <h3>전체 워드 클라우드</h3>
+                <p>*24시간 기준 실시간 순위 집계</p>
                 <WordCloud 
                   words={convertToWords(dataList.find(data => data.age === 0)?.keywordRanks.slice(0,60) || [])} 
                   options={wordCloudOptions}
@@ -140,8 +141,9 @@ export default function Home() {
             )}
           </div>
           <div className={styles.keywordBox}>
-            <div>
+            <div className={styles.keywordBoxTop}>
               <h3>나이대별 키워드 순위</h3>
+              <p>*24시간 기준 실시간 순위 집계</p>
             </div>
             <div className={styles.buttonWrap}>
               {ageButtons.map((buttonData, index) => (

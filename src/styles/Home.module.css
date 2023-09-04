@@ -42,6 +42,14 @@ li {
   height: 90%;
 }
 
+.wordCloud>p, .keywordBoxTop>p {
+  width: 100%;
+  text-align: end;
+  font-size: 12px;
+  font-weight: 500;
+  color: #989898;
+}
+
 .title {
   font-family: "SUIT Variable", sans-serif;
   margin: 32px 0 24px 24px;
@@ -65,6 +73,10 @@ li {
   padding: 30px;
   box-shadow: 2px 4px 16px #cecece;
   border-radius: 25px;
+}
+
+.keywordBoxTop {
+  width: 100%;
 }
 
 h3 {

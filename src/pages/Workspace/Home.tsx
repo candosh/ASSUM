@@ -79,7 +79,11 @@ export default function Home() {
   ];
 
   // KeywordRank 배열을 Word 배열로 변환하는 함수
-  const convertToWords = (keywordRanks: KeywordRank[]): Word[] => {
+  const convertToWords = (keywordRanks: KeywordRank[] | undefined): Word[] => {
+    if (!keywordRanks) {
+      return [];
+    }
+  
     return keywordRanks.map((rank) => ({
       text: rank.keyword,
       value: rank.count,
@@ -137,7 +141,7 @@ export default function Home() {
           </div>
           <div className={styles.keywordBox}>
             <div>
-              <p><h3>나이대별 키워드 순위</h3></p>
+              <h3>나이대별 키워드 순위</h3>
             </div>
             <div className={styles.buttonWrap}>
               {ageButtons.map((buttonData, index) => (

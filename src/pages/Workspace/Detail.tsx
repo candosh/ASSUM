@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "@src/styles/Detail.module.css"
-// import { FaPlay, FaStop } from "react-icons/fa";
-// import { getSpeech } from "@src/lib/getSpeech";
+import { FaPlay, FaStop } from "react-icons/fa";
+import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
 import Loading from "./Loading";
 import SideNav from "@src/components/Wokspace/SideNav";
@@ -17,7 +17,7 @@ const Detail = () => {
   const keyword = useAtomValue(dataKeywordArr);
   const sum = useAtomValue(dataSum);
   const link = useAtomValue(dataLink);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [userId] = useAtom(userIdAtom);
 
   type Contents = {
@@ -56,7 +56,6 @@ const Detail = () => {
       });
   };
 
-  /*
   useEffect(() => {
     window.speechSynthesis.getVoices();
   }, []);
@@ -70,7 +69,6 @@ const Detail = () => {
       setIsPlaying(true);
     }
   };
-  */
 
   if (!contents) {
     return <Loading />;
@@ -100,7 +98,6 @@ const Detail = () => {
               ))}
             </div>
           </div>
-          {/*
           <div className={styles.playWrapper}>
             {isPlaying ? (
               <FaStop className={styles.iconStop} onClick={handlePlayButton}></FaStop>
@@ -108,7 +105,6 @@ const Detail = () => {
               <FaPlay className={styles.iconPlay} onClick={handlePlayButton}></FaPlay>
             )}
           </div>
-           */}
           <div className={styles.content}>
             <div className={styles.summaryBox}>
               {contents.text.split(/, |\. /).map((sentence, index, array) => (

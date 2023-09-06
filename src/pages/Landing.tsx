@@ -144,7 +144,7 @@ export default function info() {
             </div>
           </Link>
         </div>
-        {/* footer */}
+        {/* footer - 멤버 변경*/}
         <div className={styles.footer}>
           <img src={logoGrey} alt="logo-grey" className={styles.footerLogo} />
           <p className={styles.articleFooter}>어썸</p>
@@ -161,15 +161,11 @@ export default function info() {
             <p className={styles.BE}>박정우</p>
           </div>
           <div className={styles.member4}>
-            <p className={styles.PL}>PROJECT MANAGER</p>
-            <p className={styles.PM}>최신임</p>
-          </div>
-          <div className={styles.member5}>
-            <p className={styles.PL}>PROJECT MANAGER</p>
-            <p className={styles.PM}>정의민</p>
+          <p className={styles.PL}>BACKEND DEVELOPER</p>
+            <p className={styles.BE}>유승한</p>
           </div>
           <p className={styles.footerTitle}>
-            SOONGSIL UNIVERSITY LIKELION HACKATHON PROJECT
+            @ASSUM
           </p>
           <div className={styles.fhr}></div>
         </div>

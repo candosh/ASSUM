@@ -144,7 +144,7 @@ export default function info() {
             </div>
           </Link>
         </div>
-        {/* footer */}
+        {/* footer - 멤버 변경*/}
         <div className={styles.footer}>
           <img src={logoGrey} alt="logo-grey" className={styles.footerLogo} />
           <p className={styles.articleFooter}>어썸</p>

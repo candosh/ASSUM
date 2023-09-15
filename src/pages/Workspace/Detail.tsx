@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "@src/styles/Detail.module.css";
+import Loading from "./Loading";
+import SideNav from "@src/components/Wokspace/SideNav";
 import { FaPlay, FaStop } from "react-icons/fa";
 import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
-import Loading from "./Loading";
-import SideNav from "@src/components/Wokspace/SideNav";
 import { useAtomValue } from "jotai";
 import { useAtom } from "jotai";
 import {

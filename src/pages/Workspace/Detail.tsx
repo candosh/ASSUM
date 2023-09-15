@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import styles from "@src/styles/Detail.module.css"
-// import { FaPlay, FaStop } from "react-icons/fa";
-// import { getSpeech } from "@src/lib/getSpeech";
+import styles from "@src/styles/Detail.module.css";
+import { FaPlay, FaStop } from "react-icons/fa";
+import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
 import Loading from "./Loading";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { useAtomValue } from "jotai";
 import { useAtom } from "jotai";
-import { dataTitle, dataSum, dataKeywordArr, dataLink,userIdAtom } from "@src/lib/stateJotai";
+import {
+  dataTitle,
+  dataSum,
+  dataKeywordArr,
+  dataLink,
+  userIdAtom,
+} from "@src/lib/stateJotai";
 import axios from "axios";
 
 const Detail = () => {
@@ -17,7 +23,7 @@ const Detail = () => {
   const keyword = useAtomValue(dataKeywordArr);
   const sum = useAtomValue(dataSum);
   const link = useAtomValue(dataLink);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [userId] = useAtom(userIdAtom);
 
   type Contents = {
@@ -32,23 +38,23 @@ const Detail = () => {
       setContents({
         text: sum,
         title: title,
-        keyword: keyword.split(', '),
+        keyword: keyword.split(", "),
         link: link,
       });
     }
   }, [title, keyword, sum, link]);
-  
+
   const saveFile = () => {
     axios
       .post(`https://www.assum.store/${userId}/save`, {
         text: sum,
         title: title,
-        keyword: keyword.split(', '),
+        keyword: keyword.split(", "),
         link: link,
       })
       .then((res) => {
         console.log(res);
-        alert('저장되었습니다!');
+        alert("저장되었습니다!");
         window.location.href = "/all";
       })
       .catch((err) => {
@@ -56,7 +62,6 @@ const Detail = () => {
       });
   };
 
-  /*
   useEffect(() => {
     window.speechSynthesis.getVoices();
   }, []);
@@ -70,12 +75,11 @@ const Detail = () => {
       setIsPlaying(true);
     }
   };
-  */
 
   if (!contents) {
     return <Loading />;
   }
-  
+
   return (
     <>
       <SideNav />
@@ -100,31 +104,36 @@ const Detail = () => {
               ))}
             </div>
           </div>
-          {/*
           <div className={styles.playWrapper}>
             {isPlaying ? (
-              <FaStop className={styles.iconStop} onClick={handlePlayButton}></FaStop>
+              <FaStop
+                className={styles.iconStop}
+                onClick={handlePlayButton}
+              ></FaStop>
             ) : (
-              <FaPlay className={styles.iconPlay} onClick={handlePlayButton}></FaPlay>
+              <FaPlay
+                className={styles.iconPlay}
+                onClick={handlePlayButton}
+              ></FaPlay>
             )}
           </div>
-           */}
           <div className={styles.content}>
             <div className={styles.summaryBox}>
               {contents.text.split(/, |\. /).map((sentence, index, array) => (
                 <p key={index}>
                   {sentence}
-                  {index < array.length - 1 && (array[index].endsWith(',') || array[index].endsWith('.')) ? '' : index < array.length - 1 ? ', ' : ''}
+                  {index < array.length - 1 &&
+                  (array[index].endsWith(",") || array[index].endsWith("."))
+                    ? ""
+                    : index < array.length - 1
+                    ? ", "
+                    : ""}
                 </p>
               ))}
             </div>
           </div>
           <div className={styles.bottomLink}>
-            <a
-              href={contents.link}
-              target="_blank"
-              title="original link"
-            >
+            <a href={contents.link} target="_blank" title="original link">
               원문 링크
             </a>
             <hr className={styles.breakline}></hr>
@@ -142,6 +151,6 @@ const Detail = () => {
       </div>
     </>
   );
-}
+};
 
 export default Detail;

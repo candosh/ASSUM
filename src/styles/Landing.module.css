@@ -1,18 +1,29 @@
 .root {
-  width: 119%;
+  max-width: 100%;
   min-height: 3000px;
   color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .section1 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
-  width: 100%;
-  background: linear-gradient(314deg, #E9F9FF 0%, #F4FCFF 22.27%, #FCFEFF 44.27%, #FFF 100%);
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    314deg,
+    #e9f9ff 0%,
+    #f4fcff 22.27%,
+    #fcfeff 44.27%,
+    #fff 100%
+  );
   margin: 0 auto;
   min-height: 460px;
+  text-align: center; /* 텍스트를 중앙 정렬하기 위해 추가 */
 }
 
 .shape1 {
@@ -91,7 +102,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 30px;
 }
 
@@ -104,19 +115,19 @@
   margin-bottom: 20px;
 }
 
-.pagetitle>p:nth-child(1) {
+.pagetitle > p:nth-child(1) {
   font-size: 22px;
   font-weight: 800;
   margin-bottom: 0px;
 }
 
-.pagetitle>img {
+.pagetitle > img {
   width: 25%;
   height: auto;
   margin: 0;
 }
 
-.pagetitle>p:nth-child(3) {
+.pagetitle > p:nth-child(3) {
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
@@ -130,7 +141,7 @@
   font-weight: 700;
   color: #ffffff;
   border: none;
-  background-color: #00BFFF;
+  background-color: #00bfff;
   box-shadow: 2px 3px 4px #00000029;
   border-radius: 6px;
   cursor: pointer;
@@ -151,8 +162,8 @@
   min-height: 1300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center; /* 가운데 정렬을 위해 추가 */
+  align-items: center; /* 가운데 정렬을 위해 추가 */
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -162,7 +173,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   margin: 100px 0;
 }
 
@@ -207,7 +219,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   margin: 100px 0;
 }
 
@@ -245,7 +258,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   margin: 100px 0;
 }
 
@@ -262,9 +276,17 @@
   min-height: 980px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* 가운데 정렬을 위해 추가 */
+  justify-content: center; /* 가운데 정렬을 위해 추가 */
+  text-align: center;
   padding-top: 100px;
-  background: linear-gradient(0deg, #E9F9FF 0%, #F4FCFF 22.27%, #FCFEFF 44.27%, #FFF 100%);
+  background: linear-gradient(
+    0deg,
+    #e9f9ff 0%,
+    #f4fcff 22.27%,
+    #fcfeff 44.27%,
+    #fff 100%
+  );
 }
 
 .section3Title {
@@ -278,7 +300,7 @@
   font-weight: 700;
   line-height: 40px;
   margin-top: 0px;
-  color: #00BFFF;
+  color: #00bfff;
   margin-bottom: 50px;
 }
 
@@ -300,7 +322,7 @@
   font-weight: 700;
   color: #ffffff;
   border: none;
-  background-color: #00BFFF;
+  background-color: #00bfff;
   box-shadow: 2px 3px 4px #00000029;
   border-radius: 6px;
   cursor: pointer;
@@ -313,6 +335,10 @@
   position: relative;
   margin: 0 auto;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가운데 정렬을 위해 추가 */
+  justify-content: center; /* 가운데 정렬을 위해 추가 */
 }
 
 .footerLogo {
@@ -338,7 +364,7 @@
   left: 120px;
 }
 
-.member1>p {
+.member1 > p {
   display: inline-block;
 }
 
@@ -369,11 +395,11 @@
   margin-left: 125px;
 }
 
-.member2>p {
+.member2 > p {
   display: inline-block;
 }
 
-.member3>p {
+.member3 > p {
   display: inline-block;
 }
 
@@ -395,7 +421,7 @@
   top: 250px;
 }
 
-.member4>p {
+.member4 > p {
   display: inline-block;
 }
 

@@ -5,7 +5,7 @@ li {
 .root {
   font-family: "SUIT Variable", sans-serif;
   margin-left: 300px;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,8 @@ li {
   height: 90%;
 }
 
-.wordCloud>p, .keywordBoxTop>p {
+.wordCloud > p,
+.keywordBoxTop > p {
   width: 100%;
   text-align: end;
   font-size: 12px;
@@ -96,7 +97,7 @@ button {
   border: none;
   text-decoration: none;
   background-color: white;
-  border: 1px solid #E1E2E3;
+  border: 1px solid #e1e2e3;
   box-shadow: 2px 3px 6px #cecece;
   border-radius: 80px;
   cursor: pointer;
@@ -107,7 +108,7 @@ button:not(:last-child) {
 }
 
 .selectedButton {
-  background-color: #00BFFF;
+  background-color: #00bfff;
   color: #ffffff;
   font-weight: 600;
   border: none;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "@src/styles/Detail.module.css";
+import styles from "@src/pages/Detail/Detail.module.css";
 import Loading from "./Loading";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { FaPlay, FaStop } from "react-icons/fa";

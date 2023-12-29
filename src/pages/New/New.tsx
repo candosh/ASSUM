@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "@src/styles/New.module.css";
+import styles from "@src/pages/New/New.module.css";
 import { LiaPaperclipSolid } from "react-icons/lia";
 import axios from "axios";
 import { useAtom } from "jotai";
-import { dataKeywordArr, dataLink, dataSum, dataTitle, userIdAtom } from '@src/lib/stateJotai';
-import SideNav from '@src/components/Wokspace/SideNav';
+import {
+  dataKeywordArr,
+  dataLink,
+  dataSum,
+  dataTitle,
+  userIdAtom,
+} from "@src/lib/stateJotai";
+import SideNav from "@src/components/Wokspace/SideNav";
 
 function New() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [, setTitle] = useAtom(dataTitle);
   const [, setKeywordArr] = useAtom(dataKeywordArr);
   const [, setSum] = useAtom(dataSum);
@@ -16,36 +22,39 @@ function New() {
   const [userId] = useAtom(userIdAtom);
 
   const handleSummary = async () => {
-    if (inputValue.trim() === '') {
+    if (inputValue.trim() === "") {
       // inputValue가 비어 있을 때 알림 창 표시
-      alert('링크를 첨부해주세요.');
+      alert("링크를 첨부해주세요.");
       return;
-    } 
-    axios.post(`https://www.assum.store/${userId}/url?url=${inputValue}`, {
-    }).then(
-      (res) => {
-        console.log(res);
-        const data: string = res.data;
-        const dataArray = data.split('\n')
-          .map(line => 
-            line
-              .replace("제목: ", "")
-              .replace("키워드: ", "")
-              .replace("요약글: ", "")
-              .replace("제목 : ", "")
-              .replace("키워드 : ", "")
-              .replace("요약글 : ", "")
-          ).filter(item => item !== "");
+    }
+    axios
+      .post(`https://www.assum.store/${userId}/url?url=${inputValue}`, {})
+      .then(
+        (res) => {
+          console.log(res);
+          const data: string = res.data;
+          const dataArray = data
+            .split("\n")
+            .map((line) =>
+              line
+                .replace("제목: ", "")
+                .replace("키워드: ", "")
+                .replace("요약글: ", "")
+                .replace("제목 : ", "")
+                .replace("키워드 : ", "")
+                .replace("요약글 : ", "")
+            )
+            .filter((item) => item !== "");
 
-        setTitle(dataArray[0]);
-        setKeywordArr(dataArray[1]);
-        setSum(dataArray[2]);
-        setLink(inputValue);
-      },
-      (err) => {
-        console.error("API 요청 오류:", err);
-      }
-    )
+          setTitle(dataArray[0]);
+          setKeywordArr(dataArray[1]);
+          setSum(dataArray[2]);
+          setLink(inputValue);
+        },
+        (err) => {
+          console.error("API 요청 오류:", err);
+        }
+      );
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,11 +66,11 @@ function New() {
     setKeywordArr("");
     setSum("");
     setLink("");
-  }
+  };
 
   useEffect(() => {
     initialize();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -87,7 +96,9 @@ function New() {
               className={styles.textbox}
             />
             <Link to="/detail">
-              <button onClick={handleSummary} className={styles.linkBtn}>요약하기</button>
+              <button onClick={handleSummary} className={styles.linkBtn}>
+                요약하기
+              </button>
             </Link>
           </div>
         </div>

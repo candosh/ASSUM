@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import styles from "@src/styles/Favorites.module.css"
+import { useState } from "react";
+import styles from "@src/pages/Home/Favorites.module.css";
 import { BiSearch } from "react-icons/bi";
-import SideNav from '@src/components/Wokspace/SideNav';
+import SideNav from "@src/components/Wokspace/SideNav";
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -30,10 +30,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   );
 };
 
-
 function Favorites() {
   const handleSearch = (searchTerm: string) => {
-    console.log('검색어:', searchTerm);
+    console.log("검색어:", searchTerm);
     // 검색 로직 구현
   };
 
@@ -54,8 +53,7 @@ function Favorites() {
             </div>
             <hr className={styles.breakline}></hr>
           </div>
-          <div className={styles.filesWrapper}>
-          </div>
+          <div className={styles.filesWrapper}></div>
         </div>
       </div>
     </>

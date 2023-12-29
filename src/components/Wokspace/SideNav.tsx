@@ -35,15 +35,15 @@ const SideNav = () => {
 		},*/
   ];
 
-  // useEffect(() => {
-  // 	const newUid = localStorage.getItem("uid");
+  useEffect(() => {
+    const newUid = localStorage.getItem("uid");
 
-  // 	if (!userId && newUid) setUserId(Number(newUid));
-  // 	else if (!userId && !newUid) {
-  // 		alert('로그인 후 이용해주세요!');
-  // 		navigation("/login");
-  // 	}
-  // }, [])
+    if (!userId && newUid) setUserId(Number(newUid));
+    else if (!userId && !newUid) {
+      alert("로그인 후 이용해주세요!");
+      navigation("/login");
+    }
+  }, []);
 
   const handleLogout = () => {
     if (confirm("정말 로그아웃 하시겠습니까?")) {

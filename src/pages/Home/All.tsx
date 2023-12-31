@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import styles from "@src/styles/All.module.css";
+import { useState, useEffect } from "react";
+import styles from "@src/pages/Home/All.module.css";
 import { BiSearch } from "react-icons/bi";
 import { FaMicrophone } from "react-icons/fa";
-import axios from 'axios';
-import { useAtomValue } from 'jotai';
-import { userIdAtom } from '@src/lib/stateJotai';
-import SideNav from '@src/components/Wokspace/SideNav';
+import axios from "axios";
+import { useAtomValue } from "jotai";
+import { userIdAtom } from "@src/lib/stateJotai";
+import SideNav from "@src/components/Wokspace/SideNav";
 import { FiChevronLeft } from "react-icons/fi";
 
 interface SearchBarProps {
@@ -20,7 +20,7 @@ interface File {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -44,22 +44,24 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
 export default function All() {
   const userId = useAtomValue(userIdAtom);
-  const [list, setList] = useState<{ title: string, keyword: string[], link: string }[]>([]);
+  const [list, setList] = useState<
+    { title: string; keyword: string[]; link: string }[]
+  >([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 열림 상태를 관리
   const [selectedFile, setSelectedFile] = useState<File | null>({
-    title: '',
+    title: "",
     keyword: [],
-    link: '',
-    text: '',
+    link: "",
+    text: "",
   });
 
   const fetchDataWithUserId = async () => {
     try {
       const res = await axios.get(`https://www.assum.store/${userId}/all`);
       setList(res.data);
-      console.log('all.tsx 서버 요청 성공', res);
+      console.log("all.tsx 서버 요청 성공", res);
     } catch (err) {
-      console.error('all.tsx 서버 요청 실패:', err);
+      console.error("all.tsx 서버 요청 실패:", err);
     }
   };
 
@@ -87,7 +89,7 @@ export default function All() {
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>전체 파일</div>
-          <SearchBar onSearch={() => { }} />
+          <SearchBar onSearch={() => {}} />
         </div>
         <div className={styles.body}>
           <div className={styles.titleWrapper}>
@@ -97,16 +99,19 @@ export default function All() {
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            {list.slice().reverse().map((file, index) => (
-              <div key={index} onClick={() => handleFileClick(file)}>
-                <NewFileItem
-                  key={index}
-                  fileTitle={file.title}
-                  fileKeyword={file.keyword}
-                  fileLink={file.link}
-                />
-              </div>
-            ))}
+            {list
+              .slice()
+              .reverse()
+              .map((file, index) => (
+                <div key={index} onClick={() => handleFileClick(file)}>
+                  <NewFileItem
+                    key={index}
+                    fileTitle={file.title}
+                    fileKeyword={file.keyword}
+                    fileLink={file.link}
+                  />
+                </div>
+              ))}
             {/* 모달 열기 */}
             {isModalOpen && selectedFile && (
               <Modal file={selectedFile} onClose={handleCloseModal} />
@@ -118,7 +123,15 @@ export default function All() {
   );
 }
 
-function NewFileItem({ fileTitle, fileKeyword, fileLink }: { fileTitle: string, fileKeyword: string[], fileLink: string }) {
+function NewFileItem({
+  fileTitle,
+  fileKeyword,
+  fileLink,
+}: {
+  fileTitle: string;
+  fileKeyword: string[];
+  fileLink: string;
+}) {
   return (
     <div className={styles.newroot}>
       <div className={styles.newbody}>
@@ -138,7 +151,9 @@ function NewFileItem({ fileTitle, fileKeyword, fileLink }: { fileTitle: string, 
           </div>
         </div>
         <div className={styles.newLink}>
-          <a href={fileLink} target="_blank" rel="noopener noreferrer">원문 링크</a>
+          <a href={fileLink} target="_blank" rel="noopener noreferrer">
+            원문 링크
+          </a>
           <hr />
         </div>
       </div>
@@ -166,7 +181,9 @@ function Modal({ file, onClose }: { file: File; onClose: () => void }) {
         </p>
         <p className={styles.modalText}>{file.text}</p>
         <p className={styles.modalLink}>
-          <a href={file.link} target="_blank" rel="noopener noreferrer">원문링크</a>
+          <a href={file.link} target="_blank" rel="noopener noreferrer">
+            원문링크
+          </a>
         </p>
       </div>
     </div>

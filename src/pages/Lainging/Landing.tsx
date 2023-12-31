@@ -1,4 +1,4 @@
-import styles from "@src/styles/Landing.module.css";
+import styles from "@src/pages/Lainging/Landing.module.css";
 import { Link } from "react-router-dom";
 import logo from "@src/assets/logo.png";
 import Lottie from "lottie-react";
@@ -34,10 +34,6 @@ export default function info() {
               <div className={styles.loginSignup}>
                 <Link to="/login" className={styles.linkBtn}>
                   로그인
-                </Link>
-                <p>/</p>
-                <Link to="/signup" className={styles.linkBtn}>
-                  회원가입
                 </Link>
               </div>
             </div>

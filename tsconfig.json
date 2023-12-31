@@ -23,9 +23,7 @@
     /* 절대 경로 설정 */
     "baseUrl": ".",
     "paths": {
-      "@src/*": [
-        "src/*"
-      ],
+      "@src/*": ["src/*"]
     }
   },
   "include": ["src"],

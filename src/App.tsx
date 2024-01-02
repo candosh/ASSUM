@@ -7,6 +7,7 @@ import All from "./pages/Home/All";
 import Loading from "./pages/Detail/Loading";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login/Login";
+import LoginCallback from "./pages/Login/LoginCallback";
 import Landing from "./pages/Lainging/Landing";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/callback" element={<LoginCallback />} />
           <Route path="/new" element={<New />} />
           <Route path="/home" element={<Home />} />
           <Route path="/all" element={<All />} />

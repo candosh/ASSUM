@@ -11,11 +11,6 @@ import LoginCallback from "./pages/Login/LoginCallback";
 import Landing from "./pages/Lainging/Landing";
 
 function App() {
-  const REST_API_KEY = import.meta.env.VITE_REST_API_KEY;
-  const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
-
-  const kakaoOAuthLink = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
   return (
     <div>
       <BrowserRouter>

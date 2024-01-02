@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 import lottie from "lottie-web";
 import LoadingAnim from "@src/assets/anim/loading.json";
 import styles from "@src/pages/Login/LoginCallback.module.css";
+import { useAtom } from "jotai";
+import { userIdAtom } from "@src/lib/stateJotai";
 
 function LoginCallback() {
   const navigate = useNavigate();
   const loadingAnimationRef = useRef(null);
+  const [, setUserId] = useAtom(userIdAtom);
 
   useEffect(() => {
     if (loadingAnimationRef.current) {
@@ -24,12 +27,9 @@ function LoginCallback() {
   }, []);
 
   useEffect(() => {
-    console.log("redirect");
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
-
-      console.log("code", code);
 
       if (code) {
         sendCodeToServer(code);
@@ -45,33 +45,14 @@ function LoginCallback() {
           authorizationCode: code,
         }
       );
-      console.log("response", response);
 
-      const { accessToken } = response.data;
+      const { accessToken, userId } = response.data;
       localStorage.setItem("accessToken", accessToken);
+      setUserId(userId);
 
-      getUserData(accessToken);
+      navigate("/home");
     } catch (error) {
       console.error("Error sending code to server:", error);
-    }
-  };
-
-  const getUserData = async (accessToken: string) => {
-    try {
-      const response = await axios.get("http:/www.assum.store/api/user", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      console.log("User data response:", response);
-
-      const userData = response.data;
-      localStorage.setItem("userData", JSON.stringify(userData));
-
-      // Redirect to Home page after storing user data
-      navigate("/");
-    } catch (error) {
-      console.error("Error fetching user data:", error);
     }
   };
 

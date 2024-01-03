@@ -40,7 +40,7 @@ function LoginCallback() {
   const sendCodeToServer = async (code: string) => {
     try {
       const response = await axios.post(
-        "http://www.assum.store/api/auth/kakao",
+        "https://www.assum.store/api/auth/kakao",
         {
           authorizationCode: code,
         }

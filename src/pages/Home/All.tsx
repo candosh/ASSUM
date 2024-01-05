@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { FaMicrophone } from "react-icons/fa";
 import axios from "axios";
 import { useAtomValue } from "jotai";
-import { userIdAtom } from "@src/lib/stateJotai";
+import { userIdAtom } from "@src/store/stateJotai";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { FiChevronLeft } from "react-icons/fi";
 

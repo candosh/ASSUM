@@ -10,7 +10,7 @@ import {
   dataSum,
   dataTitle,
   userIdAtom,
-} from "@src/lib/stateJotai";
+} from "@src/store/stateJotai";
 import SideNav from "@src/components/Wokspace/SideNav";
 
 function New() {

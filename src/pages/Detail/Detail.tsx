@@ -13,7 +13,7 @@ import {
   dataKeywordArr,
   dataLink,
   userIdAtom,
-} from "@src/lib/stateJotai";
+} from "@src/store/stateJotai";
 import axios from "axios";
 
 const Detail = () => {

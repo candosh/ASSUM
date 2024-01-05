@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import lottie from "lottie-web";
 import styles from "@src/pages/Lainging/Landing.module.css";
 import { Link } from "react-router-dom";
 import logo from "@src/assets/logo.png";
@@ -15,10 +17,28 @@ import Arrow from "@src/assets/img/blueArrow.png";
 import Mic from "@src/assets/img/blueMic.png";
 import AI from "@src/assets/img/blueAI.png";
 import People from "@src/assets/img/people.png";
-import ArrowBottom from "@src/assets/img/arrowBottom.png";
+import arrowAnim from "@src/assets/anim/animation_arrow.json";
+//import ArrowBottom from "@src/assets/img/arrowBottom.png";
 import logoGrey from "@src/assets/logo-grey2.png";
 
-export default function info() {
+export default function Info() {
+  // arrow 로티 추가
+  const arrowAnimRef = useRef(null);
+
+  useEffect(() => {
+    if (arrowAnimRef.current) {
+      const animation = lottie.loadAnimation({
+        container: arrowAnimRef.current,
+        animationData: arrowAnim,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+      });
+
+      return () => animation.destroy();
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.root}>
@@ -139,11 +159,7 @@ export default function info() {
             <br /> 어썸은 끝없이 노력하겠습니다
           </p>
           <img src={People} alt="people" className={styles.section3People} />
-          <img
-            src={ArrowBottom}
-            alt="arrow-bottom"
-            className={styles.arrowBottom}
-          />
+          <div ref={arrowAnimRef} className={styles.arrowAnim} />
           <Link to="/home">
             <div className={styles.Btnbox2}>
               <button className={styles.startBtn2}>어썸 시작하기</button>

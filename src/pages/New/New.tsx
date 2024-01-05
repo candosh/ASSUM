@@ -9,7 +9,6 @@ import {
   dataLink,
   dataSum,
   dataTitle,
-  userIdAtom,
 } from "@src/store/stateJotai";
 import SideNav from "@src/components/Wokspace/SideNav";
 
@@ -19,7 +18,6 @@ function New() {
   const [, setKeywordArr] = useAtom(dataKeywordArr);
   const [, setSum] = useAtom(dataSum);
   const [, setLink] = useAtom(dataLink);
-  const [userId] = useAtom(userIdAtom);
 
   const handleSummary = async () => {
     if (inputValue.trim() === "") {
@@ -27,8 +25,22 @@ function New() {
       alert("링크를 첨부해주세요.");
       return;
     }
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+
     axios
-      .post(`https://www.assum.store/${userId}/url?url=${inputValue}`, {})
+      .post(
+        `https://www.assum.store/url=${inputValue}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then(
         (res) => {
           console.log(res);

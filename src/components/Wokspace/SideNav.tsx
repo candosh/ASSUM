@@ -24,7 +24,7 @@ const SideNav = () => {
       icon: <GoHome className={styles.menuIcon} />,
     },
     {
-      name: "전체 파일",
+      name: "히스토리",
       path: "/all",
       icon: <GoFileDirectory className={styles.menuIcon} />,
     },
@@ -65,7 +65,7 @@ const SideNav = () => {
         </Link>
         <Link to="/new" className={styles.newButton}>
           <GoLink className={styles.newIcon}></GoLink>
-          <span style={{ marginLeft: "8px" }}>새 파일</span>
+          <span style={{ marginLeft: "8px" }}>새 요약 만들기</span>
         </Link>
         <div className={styles.menuWrapper}>
           {menuData.map((menu, index) => (

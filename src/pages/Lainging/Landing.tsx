@@ -48,7 +48,7 @@ export default function info() {
                   들려드릴게요
                 </p>
               </div>
-              <Link to="/login" className={styles.linkBtn}>
+              <Link to="/home" className={styles.linkBtn}>
                 <button className={styles.startBtn}>어썸 시작하기</button>
               </Link>
               <img src={iMac} alt="iMac" className={styles.iMackImg} />
@@ -144,7 +144,7 @@ export default function info() {
             alt="arrow-bottom"
             className={styles.arrowBottom}
           />
-          <Link to="/login">
+          <Link to="/home">
             <div className={styles.Btnbox2}>
               <button className={styles.startBtn2}>어썸 시작하기</button>
             </div>

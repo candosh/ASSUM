@@ -50,7 +50,7 @@ function LoginCallback() {
       localStorage.setItem("accessToken", accessToken);
       setUserId(userId);
 
-      navigate("/home");
+      navigate("/login/age");
     } catch (error) {
       console.error("Error sending code to server:", error);
     }

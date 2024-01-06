@@ -33,8 +33,10 @@ function New() {
 
     axios
       .post(
-        `https://www.assum.store/url=${inputValue}`,
-        {},
+        "https://www.assum.store/url",
+        {
+          url: inputValue,
+        },
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

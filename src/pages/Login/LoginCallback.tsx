@@ -58,6 +58,7 @@ function LoginCallback() {
 
       const { age } = ageResponse.data;
 
+      console.log(age);
       // age 값이 0 or undefined 이면 모달 띄움
       if (age === undefined || age === 0) {
         console.log("신규 회원가입 - 나이 입력 필요");

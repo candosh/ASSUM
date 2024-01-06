@@ -23,11 +23,18 @@ export default function Home() {
   const [dataList, setDataList] = useState<ApiResponse[]>([]);
   const [dataTotalList] = useState<ApiResponse[]>([]);
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
+  const accessToken = localStorage.getItem("accessToken");
 
+  // 토큰 추가 (아직 토큰이 필요한 로직)
   const fetchKeywordRanking = async () => {
     try {
       const res = await axios.get<ApiResponse[]>(
-        `https://www.assum.store/keywords/keywordRanking`
+        `https://www.assum.store/keywords/keywordRanking`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
       console.log("home.tsx 리스트 가져오기 성공", res);
 
@@ -42,7 +49,12 @@ export default function Home() {
   const fetchKeywordTotal = async () => {
     try {
       const res = await axios.get<ApiResponse[]>(
-        `https://www.assum.store/keywords/keywordTotalRanking`
+        `https://www.assum.store/keywords/keywordTotalRanking`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
       console.log("home.tsx 전체리스트 가져오기 성공", res);
       // 0대 데이터를 dataList에 추가

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "@src/pages/New/New.module.css";
 import { LiaPaperclipSolid } from "react-icons/lia";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAtom } from "jotai";
 import {
@@ -18,55 +19,54 @@ function New() {
   const [, setKeywordArr] = useAtom(dataKeywordArr);
   const [, setSum] = useAtom(dataSum);
   const [, setLink] = useAtom(dataLink);
+  const navigate = useNavigate();
 
   const handleSummary = async () => {
     if (inputValue.trim() === "") {
-      // inputValue가 비어 있을 때 알림 창 표시
-      alert("링크를 첨부해주세요.");
+      alert("링크를 첨부해주세요.미첨부 시 무한 로딩 될 수 있습니다.");
       return;
     }
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
-      alert("로그인이 필요합니다.");
+      alert("로그인이 필요한 서비스 입니다.");
+      navigate("/login");
       return;
     }
 
-    axios
-      .post(
-        `https://www.assum.store/url=${inputValue}`,
+    try {
+      const res = await axios.post(
+        `https://www.assum.store/url?url=${encodeURIComponent(inputValue)}`,
         {},
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      )
-      .then(
-        (res) => {
-          console.log(res);
-          const data: string = res.data;
-          const dataArray = data
-            .split("\n")
-            .map((line) =>
-              line
-                .replace("제목: ", "")
-                .replace("키워드: ", "")
-                .replace("요약글: ", "")
-                .replace("제목 : ", "")
-                .replace("키워드 : ", "")
-                .replace("요약글 : ", "")
-            )
-            .filter((item) => item !== "");
-
-          setTitle(dataArray[0]);
-          setKeywordArr(dataArray[1]);
-          setSum(dataArray[2]);
-          setLink(inputValue);
-        },
-        (err) => {
-          console.error("API 요청 오류:", err);
-        }
       );
+      console.log(res);
+      const data: string = res.data;
+      const dataArray = data
+        .split("\n")
+        .map((line) =>
+          line
+            .replace("제목: ", "")
+            .replace("키워드: ", "")
+            .replace("요약글: ", "")
+            .replace("제목 : ", "")
+            .replace("키워드 : ", "")
+            .replace("요약글 : ", "")
+        )
+        .filter((item) => item !== "");
+
+      setTitle(dataArray[0]);
+      setKeywordArr(dataArray[1]);
+      setSum(dataArray[2]);
+      setLink(inputValue);
+
+      navigate("/detail"); // 여기서 /detail로 이동
+    } catch (err) {
+      console.error("API 요청 오류:", err);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

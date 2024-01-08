@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { GoHome, GoFileDirectory, GoLink } from "react-icons/go";
 // import { GoStar } from "react-icons/go";
 import logo from "@src/assets/logo.png";
-import styles from "@src/styles/SideNav.module.css";
+import styles from "./SideNav.module.css";
 import { useAtom } from "jotai";
 import { userIdAtom } from "@src/store/stateJotai";
 

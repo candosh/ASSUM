@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
-import styles from "@src/pages/Lainging/Landing.module.css";
+import styles from "@src/pages/Landing/Landing.module.css";
 import { Link } from "react-router-dom";
 import logo from "@src/assets/logo.png";
 import Lottie from "lottie-react";

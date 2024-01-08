@@ -55,9 +55,18 @@ export default function All() {
     text: "",
   });
 
+  const accessToken = localStorage.getItem("accessToken");
+
   const fetchDataWithUserId = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
     try {
-      const res = await axios.get(`https://www.assum.store/${userId}/all`);
+      const res = await axios.get(`https://www.assum.store/all`, config);
+      console.log(res.data);
       setList(res.data);
       console.log("all.tsx 서버 요청 성공", res);
     } catch (err) {

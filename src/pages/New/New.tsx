@@ -20,7 +20,6 @@ function New() {
   const [, setSum] = useAtom(dataSum);
   const [, setLink] = useAtom(dataLink);
   const navigate = useNavigate();
-
   const handleSummary = async () => {
     if (inputValue.trim() === "") {
       alert("링크를 첨부해주세요.미첨부 시 무한 로딩 될 수 있습니다.");
@@ -33,15 +32,22 @@ function New() {
       return;
     }
 
+    console.log(accessToken);
+
+    const config = {
+      params: {
+        url: inputValue,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
     try {
       const res = await axios.post(
-        `https://www.assum.store/url?url=${encodeURIComponent(inputValue)}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
+        `https://www.assum.store/url`,
+        null,
+        config
       );
       console.log(res);
       const data: string = res.data;

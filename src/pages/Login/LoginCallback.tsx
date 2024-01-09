@@ -45,7 +45,7 @@ function LoginCallback() {
           authorizationCode: code,
         }
       );
-
+      console.log(response.data);
       const { accessToken } = response.data;
       localStorage.setItem("accessToken", accessToken);
 

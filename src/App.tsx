@@ -8,7 +8,7 @@ import Loading from "./pages/Detail/Loading";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import LoginCallback from "./pages/Login/LoginCallback";
-import Landing from "./pages/Lainging/Landing";
+import Landing from "./pages/Landing/Landing";
 
 function App() {
   return (

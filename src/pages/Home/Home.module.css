@@ -5,7 +5,7 @@ li {
 .root {
   font-family: "SUIT Variable", sans-serif;
   margin-left: 300px;
-  width: 100%;
+  width: 100%-300px;
   display: flex;
   flex-direction: column;
   align-items: center;

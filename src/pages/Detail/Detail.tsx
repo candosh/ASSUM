@@ -6,13 +6,12 @@ import { FaPlay, FaStop } from "react-icons/fa";
 import { getSpeech } from "@src/lib/getSpeech";
 import { getFormattedDate } from "src/components/Wokspace/Date.ts";
 import { useAtomValue } from "jotai";
-import { useAtom } from "jotai";
+// import { useAtom } from "jotai";
 import {
   dataTitle,
   dataSum,
   dataKeywordArr,
   dataLink,
-  userIdAtom,
 } from "@src/store/stateJotai";
 import axios from "axios";
 
@@ -24,7 +23,6 @@ const Detail = () => {
   const sum = useAtomValue(dataSum);
   const link = useAtomValue(dataLink);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [userId] = useAtom(userIdAtom);
 
   type Contents = {
     text: string;
@@ -34,24 +32,34 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    if (title && keyword && sum) {
-      setContents({
-        text: sum,
-        title: title,
-        keyword: keyword.split(", "),
-        link: link,
-      });
-    }
+  if (title && keyword && sum) {
+    setContents({
+      text: sum,
+      title: title,
+      keyword: keyword.split(", "),
+      link: link,
+    });
+  }
+  console.log("데이터 저장 시: ",contents);
   }, [title, keyword, sum, link]);
 
+  const accessToken = localStorage.getItem("accessToken");
+
   const saveFile = () => {
-    axios
-      .post(`https://www.assum.store/${userId}/save`, {
+    const config = {
+      params: {
         text: sum,
         title: title,
-        keyword: keyword.split(", "),
+        keyword: keyword,
         link: link,
-      })
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+    axios
+      .post(`https://www.assum.store/save`, null, config)
       .then((res) => {
         console.log(res);
         alert("저장되었습니다!");

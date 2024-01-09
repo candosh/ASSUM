@@ -1,11 +1,11 @@
 .root {
-  max-width: 100%;
-  min-height: 3000px;
+  width: 100%;
   color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .section1 {
@@ -23,7 +23,7 @@
   );
   margin: 0 auto;
   min-height: 460px;
-  text-align: center; /* 텍스트를 중앙 정렬하기 위해 추가 */
+  text-align: center;
 }
 
 .shape1 {

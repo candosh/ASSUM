@@ -45,22 +45,18 @@ function LoginCallback() {
           authorizationCode: code,
         }
       );
-      console.log(response.data);
       const { accessToken } = response.data;
       localStorage.setItem("accessToken", accessToken);
 
       // age 값 요청
-      const ageResponse = await axios.get("https://www.assum.store/getAge", {
+      const ageResponse = await axios.get(`https://www.assum.store/getAge`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
 
-      const { age } = ageResponse.data;
-
-      console.log(age);
       // age 값이 0 or undefined 이면 모달 띄움
-      if (age === undefined || age === 0) {
+      if (ageResponse.data === undefined || ageResponse.data === 0) {
         console.log("신규 회원가입 - 나이 입력 필요");
         setShowAgeModal(true);
       } else {

@@ -1,11 +1,9 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GoHome, GoFileDirectory, GoLink } from "react-icons/go";
 // import { GoStar } from "react-icons/go";
 import logo from "@src/assets/logo.png";
 import styles from "./SideNav.module.css";
-import { useAtom } from "jotai";
-import { userIdAtom } from "@src/store/stateJotai";
 
 interface MenuProvider {
   name: string;
@@ -14,7 +12,6 @@ interface MenuProvider {
 }
 
 const SideNav = () => {
-  const [userId, setUserId] = useAtom(userIdAtom);
   const navigation = useNavigate();
 
   const menuData: MenuProvider[] = [
@@ -35,19 +32,10 @@ const SideNav = () => {
 		},*/
   ];
 
-  //우선 useid 확인 로직 뗌
-
-  useEffect(() => {
-    const newUid = localStorage.getItem("uid");
-
-    if (!userId && newUid) {
-      setUserId(Number(newUid));
-    }
-    // else if (!userId && !newUid) {
-    //   alert("로그인 후 이용해주세요!");
-    //   navigation("/login");
-    // }
-  }, [userId, navigation]);
+  // 로그인 여부 확인
+  const isTokenPresent = () => {
+    return !!localStorage.getItem("accessToken");
+  };
 
   const handleLogout = () => {
     if (confirm("정말 로그아웃 하시겠습니까?")) {

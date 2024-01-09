@@ -26,13 +26,6 @@ function New() {
       return;
     }
     const accessToken = localStorage.getItem("accessToken");
-    if (!accessToken) {
-      alert("로그인이 필요한 서비스 입니다.");
-      navigate("/login");
-      return;
-    }
-
-    console.log(accessToken);
 
     const config = {
       params: {
@@ -44,11 +37,7 @@ function New() {
       },
     };
     try {
-      const res = await axios.post(
-        `https://www.assum.store/url`,
-        null,
-        config
-      );
+      const res = await axios.post(`https://www.assum.store/url`, null, config);
       console.log(res);
       const data: string = res.data;
       const dataArray = data

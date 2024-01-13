@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "@src/pages/Home/All.module.css";
 import { FaMicrophone } from "react-icons/fa";
 import axios from "axios";

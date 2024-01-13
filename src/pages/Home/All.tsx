@@ -8,6 +8,8 @@ import SideNav from "@src/components/Wokspace/SideNav";
 import { FiChevronLeft } from "react-icons/fi";
 import SearchBar from "@src/components/Search/SearchBar";
 
+// '히스토리': 전체파일 페이지
+
 interface File {
   title: string;
   keyword: string[];
@@ -27,6 +29,7 @@ export default function All() {
     link: "",
     text: "",
   });
+  const [, setSearchResults] = useState<File[]>([]);
 
   const accessToken = localStorage.getItem("accessToken");
 
@@ -65,13 +68,35 @@ export default function All() {
     setIsModalOpen(false);
   };
 
+  // 검색 함수
+  const handleSearch = async (searchTerm: string) => {
+    if (!searchTerm) return;
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    try {
+      const response = await axios.get(
+        `https://www.assum.store/findByKeyword?title=${searchTerm}`,
+        config
+      );
+      setSearchResults(response.data);
+    } catch (error) {
+      console.error("검색 요청 실패:", error);
+    }
+  };
+
   return (
     <div>
       <SideNav />
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>전체 파일</div>
-          <SearchBar onSearch={() => {}} />
+          <SearchBar onSearch={handleSearch} />
         </div>
         <div className={styles.body}>
           <div className={styles.titleWrapper}>

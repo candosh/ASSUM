@@ -38,7 +38,9 @@ function New() {
     };
     try {
       const res = await axios.post(`https://www.assum.store/url`, null, config);
-      console.log(res);
+
+      // console.log(res); 개발 시에만 콘솔 사용하기
+
       const data: string = res.data;
       const dataArray = data
         .split("\n")
@@ -59,8 +61,11 @@ function New() {
       setLink(inputValue);
 
       navigate("/detail"); // 여기서 /detail로 이동
-    } catch (err) {
+    } catch (err: any) {
       console.error("API 요청 오류:", err);
+      console.log("에러 응답:", err.response.data);
+      console.log("에러 상태 코드:", err.response.status);
+      console.log("에러 헤더:", err.response.headers);
     }
   };
 

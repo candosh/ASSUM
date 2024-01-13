@@ -86,7 +86,7 @@
   margin-top: 16px;
 }
 
-.filesWrapper>div {
+.filesWrapper > div {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -126,7 +126,7 @@
   width: 28px;
   height: 28px;
   color: white;
-  background-color: #00BFFF;
+  background-color: #00bfff;
   border-radius: 3px;
 }
 
@@ -157,8 +157,8 @@
 .newKeyword {
   margin: 0 5px;
   padding: 5px 8px;
-  border: 1px solid #00BFFF;
-  color: #00BFFF;
+  border: 1px solid #00bfff;
+  color: #00bfff;
   font-size: 14px;
   font-weight: 500;
   border-radius: 50px;
@@ -168,17 +168,17 @@
   gap: 0px;
 }
 
-.newLink>a {
+.newLink > a {
   text-decoration: none;
-  color: #00BFFF;
+  color: #00bfff;
   font-size: 15px;
   font-weight: 600;
   margin: 0;
 }
 
-.newLink>hr {
+.newLink > hr {
   margin: 0;
-  border: 1px solid #00BFFF;
+  border: 1px solid #00bfff;
 }
 
 .newbreakline {
@@ -233,14 +233,14 @@
   height: 30px;
 }
 
-.modalContent>h2 {
+.modalContent > h2 {
   font-family: "KCC-Chassam", "SUIT Variable", sans-serif;
 }
 
 .modalKeyword {
   margin: 0 5px;
   padding: 6px 12px;
-  background-color: #00BFFF;
+  background-color: #00bfff;
   color: white;
   font-size: 15px;
   font-weight: 600;
@@ -255,14 +255,14 @@
 
 .modalLink {
   margin-bottom: 54px;
-  border: 1.5px solid #00BFFF;
+  border: 1.5px solid #00bfff;
   padding: 6px 12px;
   border-radius: 5px;
 }
 
-.modalLink>a {
+.modalLink > a {
   text-decoration: none;
-  color: #00BFFF;
+  color: #00bfff;
   font-weight: 600;
   margin: 0;
 }

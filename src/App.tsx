@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import New from "./pages/New/New";
 import Detail from "./pages/Detail/Detail";
-import Favorites from "./pages/Home/Favorites";
+import Histroy from "./pages/Home/Favorites";
 import All from "./pages/Home/All";
 import Loading from "./pages/Detail/Loading";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
@@ -22,7 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/all" element={<All />} />
           <Route path="/detail" element={<Detail />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Histroy />} />
           <Route path="/loading" element={<Loading />} />
         </Routes>
       </BrowserRouter>

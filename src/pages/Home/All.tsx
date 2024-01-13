@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "@src/pages/Home/All.module.css";
-import { BiSearch } from "react-icons/bi";
 import { FaMicrophone } from "react-icons/fa";
 import axios from "axios";
 import { useAtomValue } from "jotai";
 import { userIdAtom } from "@src/store/stateJotai";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { FiChevronLeft } from "react-icons/fi";
-
-interface SearchBarProps {
-  onSearch: (searchTerm: string) => void;
-}
+import SearchBar from "@src/components/Search/SearchBar";
 
 interface File {
   title: string;
@@ -18,29 +14,6 @@ interface File {
   link: string;
   text?: string;
 }
-
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSearchTerm(value);
-    onSearch(value);
-  };
-
-  return (
-    <div className={styles.inputContainer}>
-      <BiSearch className={styles.iconSearch}></BiSearch>
-      <input
-        type="text"
-        placeholder="검색어를 입력하세요..."
-        value={searchTerm}
-        onChange={handleInputChange}
-        className={styles.searchBar}
-      />
-    </div>
-  );
-};
 
 export default function All() {
   const userId = useAtomValue(userIdAtom);
@@ -82,14 +55,14 @@ export default function All() {
 
   // 파일 클릭 시 모달 열기
   const handleFileClick = (file: File) => {
-    setSelectedFile(file); // 선택한 파일 정보 저장
-    setIsModalOpen(true); // 모달 열기
+    setSelectedFile(file);
+    setIsModalOpen(true);
   };
 
   // 모달 닫기
   const handleCloseModal = () => {
-    setSelectedFile(null); // 선택한 파일 정보 초기화
-    setIsModalOpen(false); // 모달 닫기
+    setSelectedFile(null);
+    setIsModalOpen(false);
   };
 
   return (

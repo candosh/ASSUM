@@ -1,4 +1,4 @@
-// 제외 모달 스타일 컴포넌트
+// 기본 모달 스타일 컴포넌트
 
 import styled from "styled-components";
 

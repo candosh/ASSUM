@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "@src/pages/Home/All.module.css";
-import { BiSearch } from "react-icons/bi";
 import { FaMicrophone } from "react-icons/fa";
 import axios from "axios";
-import { useAtomValue } from "jotai";
-import { userIdAtom } from "@src/store/stateJotai";
 import SideNav from "@src/components/Wokspace/SideNav";
 import { FiChevronLeft } from "react-icons/fi";
+import SearchBar from "@src/components/Search/SearchBar";
 
-interface SearchBarProps {
-  onSearch: (searchTerm: string) => void;
-}
+// '히스토리': 전체파일 페이지
 
 interface File {
   title: string;
@@ -19,31 +15,7 @@ interface File {
   text?: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSearchTerm(value);
-    onSearch(value);
-  };
-
-  return (
-    <div className={styles.inputContainer}>
-      <BiSearch className={styles.iconSearch}></BiSearch>
-      <input
-        type="text"
-        placeholder="검색어를 입력하세요..."
-        value={searchTerm}
-        onChange={handleInputChange}
-        className={styles.searchBar}
-      />
-    </div>
-  );
-};
-
 export default function All() {
-  const userId = useAtomValue(userIdAtom);
   const [list, setList] = useState<
     { title: string; keyword: string[]; link: string }[]
   >([]);
@@ -54,42 +26,66 @@ export default function All() {
     link: "",
     text: "",
   });
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<File[]>([]);
 
-  const accessToken = localStorage.getItem("accessToken");
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
 
-  const fetchDataWithUserId = async () => {
+    const fetchDataWithToken = async () => {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      try {
+        const res = await axios.get(`https://www.assum.store/all`, config);
+        console.log(res.data);
+        setList(res.data);
+        console.log("all.tsx 서버 요청 성공", res);
+      } catch (err) {
+        console.error("all.tsx 서버 요청 실패:", err);
+      }
+    };
+
+    fetchDataWithToken();
+  }, []);
+
+  // 파일 클릭 시 모달 열기
+  const handleFileClick = (file: File) => {
+    setSelectedFile(file);
+    setIsModalOpen(true);
+  };
+
+  // 모달 닫기
+  const handleCloseModal = () => {
+    setSelectedFile(null);
+    setIsModalOpen(false);
+  };
+
+  // 검색 함수
+  const handleSearch = async () => {
+    if (!searchTerm) return;
+
+    const accessToken = localStorage.getItem("accessToken");
+
     const config = {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     };
+
     try {
-      const res = await axios.get(`https://www.assum.store/all`, config);
-      console.log(res.data);
-      setList(res.data);
-      console.log("all.tsx 서버 요청 성공", res);
-    } catch (err) {
-      console.error("all.tsx 서버 요청 실패:", err);
+      const response = await axios.get(
+        `https://www.assum.store/findByKeyword?title=${searchTerm}`,
+        config
+      );
+      setSearchResults(response.data);
+    } catch (error) {
+      console.error("검색 요청 실패:", error);
     }
-  };
-
-  useEffect(() => {
-    if (userId) {
-      fetchDataWithUserId();
-    }
-  }, [userId]);
-
-  // 파일 클릭 시 모달 열기
-  const handleFileClick = (file: File) => {
-    setSelectedFile(file); // 선택한 파일 정보 저장
-    setIsModalOpen(true); // 모달 열기
-  };
-
-  // 모달 닫기
-  const handleCloseModal = () => {
-    setSelectedFile(null); // 선택한 파일 정보 초기화
-    setIsModalOpen(false); // 모달 닫기
   };
 
   return (
@@ -98,7 +94,10 @@ export default function All() {
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.title}>전체 파일</div>
-          <SearchBar onSearch={() => {}} />
+          <SearchBar
+            onSearch={(value) => setSearchTerm(value)} // 검색어 입력 시 setSearchTerm 호출
+            onSearchEnter={() => handleSearch()} // 엔터를 누르면 검색 실행
+          />
         </div>
         <div className={styles.body}>
           <div className={styles.titleWrapper}>
@@ -108,7 +107,7 @@ export default function All() {
             <hr className={styles.breakline}></hr>
           </div>
           <div className={styles.filesWrapper}>
-            {list
+            {(searchTerm ? searchResults : list)
               .slice()
               .reverse()
               .map((file, index) => (

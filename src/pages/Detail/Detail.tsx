@@ -32,15 +32,15 @@ const Detail = () => {
   };
 
   useEffect(() => {
-  if (title && keyword && sum) {
-    setContents({
-      text: sum,
-      title: title,
-      keyword: keyword.split(", "),
-      link: link,
-    });
-  }
-  console.log("데이터 저장 시: ",contents);
+    if (title && keyword && sum) {
+      setContents({
+        text: sum,
+        title: title,
+        keyword: keyword.split(", "),
+        link: link,
+      });
+    }
+    console.log("데이터 저장 시: ", contents);
   }, [title, keyword, sum, link]);
 
   const accessToken = localStorage.getItem("accessToken");

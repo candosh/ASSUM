@@ -59,6 +59,12 @@
   border-radius: 5px;
   padding: 0 10px;
 }
+
+.textbox:focus {
+  border-color: #00bfff; /* 포커스 될 때의 테두리 색상 */
+  outline: none;
+}
+
 .linkBtn {
   border: none;
   border-radius: 5px;
